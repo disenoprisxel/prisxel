@@ -71,7 +71,7 @@ export default function Home() {
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link to="/portafolio" style={{
               padding: '14px 36px', borderRadius: 9999,
-              background: 'var(--fg-light)', color: 'var(--fg-dark)',
+              background: 'var(--accent)', color: 'var(--fg-light)',
               fontSize: 14, fontWeight: 600,
             }}>
               Ver portafolio
