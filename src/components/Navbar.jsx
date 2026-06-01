@@ -89,8 +89,8 @@ export default function Navbar() {
             ))}
             <Link to="/cotizar" style={{
               fontSize: 14, fontWeight: 600, color: 'var(--fg-dark)',
-              background: 'var(--fg-light)', padding: '10px 24px',
-              borderRadius: 9999, transition: 'opacity 0.2s',
+              background: 'var(--accent)', padding: '10px 24px',
+              borderRadius: 9999, transition: 'opacity 0.2s', color: 'var(--fg-light)',
             }}>
               Cotizar proyecto
             </Link>
@@ -145,7 +145,7 @@ export default function Navbar() {
             <Link to="/cotizar" onClick={() => setMenuOpen(false)} style={{
               display: 'block', marginTop: 24, textAlign: 'center',
               fontSize: 14, fontWeight: 600, color: 'var(--fg-dark)',
-              background: 'var(--fg-light)', padding: '14px 24px',
+              background: 'var(--accent)', padding: '14px 24px',
               borderRadius: 9999,
             }}>
               Cotizar proyecto
