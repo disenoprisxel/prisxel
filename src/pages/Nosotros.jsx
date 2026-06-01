@@ -1,208 +1,302 @@
 import { Link } from 'react-router-dom'
 
-const team = [
-  { name: 'Christian M.', role: 'Director Creativo & Fundador' },
-  { name: 'Ana L.', role: 'Diseñadora UX/UI Senior' },
-  { name: 'Carlos R.', role: 'Especialista 3D & Renders' },
-  { name: 'María T.', role: 'Motion Designer & Video' },
+const values = [
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    ),
+    title: 'Excelencia',
+    desc: 'Cada pixel cuenta. No entregamos proyectos buenos, entregamos proyectos excepcionales que superan expectativas.',
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+        <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+        <circle cx="12" cy="12" r="4"/>
+      </svg>
+    ),
+    title: 'Innovación',
+    desc: 'Exploramos constantemente nuevas tecnologías y tendencias para ofrecer soluciones a la vanguardia del diseño digital.',
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
+    title: 'Compromiso',
+    desc: 'Tu proyecto es nuestro proyecto. Nos involucramos profundamente para entender tu visión y llevarla más allá.',
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 8v4l3 3"/>
+      </svg>
+    ),
+    title: 'Resultados',
+    desc: 'Diseñamos con propósito. Cada decisión creativa está respaldada por estrategia y orientada a generar impacto real.',
+  },
 ]
 
-const values = [
-  { title: 'Excelencia visual', desc: 'Cada píxel cuenta. Obsesionados con los detalles que marcan la diferencia entre bueno y extraordinario.' },
-  { title: 'Impacto real', desc: 'El diseño bonito que no convierte no sirve. Creamos piezas que generan resultados medibles.' },
-  { title: 'Innovación constante', desc: 'Adoptamos las últimas tecnologías para que nuestros clientes siempre estén a la vanguardia.' },
-  { title: 'Relación a largo plazo', desc: 'No somos proveedores, somos socios estratégicos. Crecemos junto a cada cliente.' },
+const steps = [
+  { num: '01', title: 'Descubrimiento', desc: 'Entendemos tu marca, tus objetivos y tu audiencia para crear una base sólida.' },
+  { num: '02', title: 'Concepto', desc: 'Desarrollamos propuestas creativas alineadas con tu visión y estrategia de negocio.' },
+  { num: '03', title: 'Diseño', desc: 'Materializamos el concepto con diseños de alta fidelidad cuidando cada detalle.' },
+  { num: '04', title: 'Entrega', desc: 'Refinamos, optimizamos y entregamos un producto final que supera expectativas.' },
 ]
 
 export default function Nosotros() {
   return (
     <div>
-      {/* Hero */}
-      <section style={{
-        position: 'relative', height: 600,
-        background: 'linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-navy) 100%)',
-        display: 'flex', alignItems: 'center', overflow: 'hidden',
-      }}>
+
+      {/* ── 1. MISIÓN / VISIÓN — grid 2×2 ── */}
+      <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: 'auto auto' }}>
+
+        {/* Celda 1 — Misión (texto) */}
         <div style={{
-          position: 'absolute', right: 0, top: 0, bottom: 0, width: '50%',
-          background: 'url(/images/portfolio-1.jpg) center/cover',
-          opacity: 0.3,
-        }} />
-        <div style={{
-          position: 'relative', zIndex: 1, padding: '0 60px', maxWidth: 700,
-          display: 'flex', flexDirection: 'column', gap: 24,
+          background: 'var(--bg-dark)',
+          padding: '80px 60px',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20,
+          borderRight: '1px solid var(--border)', borderBottom: '1px solid var(--border)',
         }}>
-          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>QUIÉNES SOMOS</p>
-          <h1 style={{
-            fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 5vw, 60px)',
-            fontWeight: 700, lineHeight: 1.1, color: 'var(--fg-light)',
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 28, height: 2, background: 'var(--accent)' }} />
+            <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>NUESTRA MISIÓN</p>
+          </div>
+          <h2 style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(24px, 2.5vw, 36px)',
+            fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2,
           }}>
-            Creamos experiencias digitales que transforman negocios
-          </h1>
-          <p style={{ fontSize: 17, color: 'var(--fg-muted)', lineHeight: 1.7 }}>
-            Somos un estudio de diseño digital con sede en Latinoamérica, especializados en crear identidades visuales y experiencias digitales que generan impacto real para nuestros clientes.
+            Impulsar el crecimiento de marcas ambiciosas
+          </h2>
+          <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
+            Combinamos creatividad, tecnología y estrategia para entregar soluciones que no solo se ven extraordinarias, sino que generan resultados reales.
+          </p>
+        </div>
+
+        {/* Celda 2 — Imagen laptop */}
+        <div style={{
+          minHeight: 340,
+          background: 'url(/images/service-web.jpg) center/cover no-repeat',
+          borderBottom: '1px solid var(--border)',
+        }} />
+
+        {/* Celda 3 — Imagen arquitectura */}
+        <div style={{
+          minHeight: 340,
+          background: 'url(/images/service-arch.jpg) center/cover no-repeat',
+          borderRight: '1px solid var(--border)',
+        }} />
+
+        {/* Celda 4 — Visión (texto) */}
+        <div style={{
+          background: 'var(--bg-navy)',
+          padding: '80px 60px',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ width: 28, height: 2, background: 'var(--accent)' }} />
+            <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>NUESTRA VISIÓN</p>
+          </div>
+          <h2 style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(24px, 2.5vw, 36px)',
+            fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2,
+          }}>
+            Ser el referente en diseño digital en Colombia
+          </h2>
+          <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
+            Reconocidos por la calidad excepcional de nuestro trabajo y por transformar cada proyecto en una experiencia memorable.
           </p>
         </div>
       </section>
 
-      <div style={{ height: 1, background: 'var(--border)' }} />
-
-      {/* Stats */}
+      {/* ── 2. STATS — fondo naranja ── */}
       <section style={{
-        background: 'var(--bg-navy)', padding: '40px 60px',
+        background: 'var(--accent)', padding: '48px 60px',
       }}>
         <div style={{
           maxWidth: 1440, margin: '0 auto',
-          display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24,
+          display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 32,
         }}>
           {[
-            { num: '150+', label: 'Proyectos completados' },
-            { num: '80+', label: 'Clientes satisfechos' },
-            { num: '6', label: 'Años de experiencia' },
-            { num: '4', label: 'Países de impacto' },
+            { num: '+50', label: 'Proyectos entregados' },
+            { num: '+30', label: 'Clientes satisfechos' },
+            { num: '4',   label: 'Servicios especializados' },
+            { num: '5+',  label: 'Años de experiencia' },
           ].map(s => (
-            <div key={s.label} style={{ textAlign: 'center', flex: '1 1 160px' }}>
+            <div key={s.label} style={{ flex: '1 1 140px', textAlign: 'center' }}>
               <p style={{
-                fontFamily: 'var(--font-h)', fontSize: 48, fontWeight: 700, color: 'var(--accent)',
+                fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 4vw, 52px)',
+                fontWeight: 800, color: 'var(--fg-light)', lineHeight: 1,
               }}>{s.num}</p>
-              <p style={{ fontSize: 13, color: 'var(--fg-muted)', marginTop: 4 }}>{s.label}</p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 6, fontWeight: 500 }}>{s.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <div style={{ height: 1, background: 'var(--border)' }} />
+      {/* ── 3. VALORES ── */}
+      <section style={{ background: 'var(--bg-dark)', padding: '100px 60px' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 56 }}>
+          {/* Header centrado */}
+          <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>NUESTROS VALORES</p>
+            <h2 style={{
+              fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 3vw, 42px)',
+              fontWeight: 700, color: 'var(--fg-light)',
+            }}>
+              Lo que nos define como estudio
+            </h2>
+          </div>
 
-      {/* Story */}
-      <section style={{
-        background: 'var(--bg-dark)', padding: '100px 60px',
-        display: 'flex', gap: 80, alignItems: 'center', flexWrap: 'wrap',
-      }}>
-        <div style={{ flex: '1 1 400px', display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>NUESTRA HISTORIA</p>
-          <h2 style={{
-            fontFamily: 'var(--font-h)', fontSize: 40, fontWeight: 700,
-            color: 'var(--fg-light)', lineHeight: 1.2,
-          }}>
-            Nacimos de la pasión por el diseño
-          </h2>
-          <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
-            Prisxel nació en 2018 con una misión clara: democratizar el diseño de alto impacto para empresas latinoamericanas. Lo que comenzó como un pequeño estudio de renders arquitectónicos, evolucionó hasta convertirse en un estudio multidisciplinar con especialidades en diseño web, visualización 3D, recorridos virtuales y producción audiovisual.
-          </p>
-          <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
-            Hoy trabajamos con clientes en más de 4 países, desde startups hasta corporativos, siempre con el mismo compromiso: entregar diseño que funciona.
-          </p>
-        </div>
-        <div style={{
-          flex: '1 1 400px', height: 400, borderRadius: 20,
-          background: 'var(--bg-slate)', border: '1px solid var(--border)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          overflow: 'hidden',
-        }}>
-          <div style={{
-            width: '80%', height: '80%',
-            background: 'linear-gradient(135deg, var(--bg-navy), var(--bg-slate))',
-            borderRadius: 12,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <span style={{ fontSize: 64, opacity: 0.1 }}>◆</span>
+          {/* Cards */}
+          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            {values.map(v => (
+              <div key={v.title} style={{
+                flex: '1 1 220px',
+                background: 'var(--bg-slate)', border: '1px solid var(--border)',
+                borderRadius: 16, padding: 32,
+                display: 'flex', flexDirection: 'column', gap: 16,
+              }}>
+                {/* Ícono en caja naranja */}
+                <div style={{
+                  width: 44, height: 44, borderRadius: 10,
+                  background: 'rgba(249,115,22,0.15)',
+                  border: '1px solid rgba(249,115,22,0.3)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'var(--accent)',
+                }}>
+                  {v.icon}
+                </div>
+                <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--fg-light)' }}>{v.title}</h3>
+                <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7 }}>{v.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Franja de imágenes */}
+          <div style={{ display: 'flex', height: 220, borderRadius: 16, overflow: 'hidden', gap: 3 }}>
+            {[
+              'url(/images/service-motion.jpg)',
+              'url(/images/slide-archviz.jpg)',
+              'url(/images/service-web.jpg)',
+              'url(/images/service-arch.jpg)',
+            ].map((img, i) => (
+              <div key={i} style={{
+                flex: 1,
+                background: `${img} center/cover no-repeat`,
+              }} />
+            ))}
           </div>
         </div>
       </section>
 
-      <div style={{ height: 1, background: 'var(--border)' }} />
-
-      {/* Values */}
-      <section style={{
-        background: 'var(--bg-slate)', padding: '100px 60px',
-        display: 'flex', flexDirection: 'column', gap: 56,
-      }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>NUESTROS VALORES</p>
-          <h2 style={{
-            fontFamily: 'var(--font-h)', fontSize: 40, fontWeight: 700,
-            color: 'var(--fg-light)',
-          }}>
-            Lo que nos define
-          </h2>
-        </div>
-        <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
-          {values.map(v => (
-            <div key={v.title} style={{
-              flex: '1 1 260px',
-              background: 'var(--bg-dark)', border: '1px solid var(--border)',
-              borderRadius: 16, padding: 32,
-              display: 'flex', flexDirection: 'column', gap: 12,
+      {/* ── 4. PROCESO ── */}
+      <section style={{ background: 'var(--bg-navy)', padding: '100px 60px' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 56 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>CÓMO TRABAJAMOS</p>
+            <h2 style={{
+              fontFamily: 'var(--font-h)', fontSize: 'clamp(26px, 3vw, 40px)',
+              fontWeight: 700, color: 'var(--fg-light)', maxWidth: 560, lineHeight: 1.2,
             }}>
-              <h3 style={{ fontSize: 18, fontWeight: 600, color: 'var(--fg-light)' }}>{v.title}</h3>
-              <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7 }}>{v.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+              Un proceso diseñado para resultados extraordinarios
+            </h2>
+          </div>
 
-      <div style={{ height: 1, background: 'var(--border)' }} />
-
-      {/* Team */}
-      <section style={{
-        background: 'var(--bg-navy)', padding: '100px 60px',
-        display: 'flex', flexDirection: 'column', gap: 56, alignItems: 'center',
-      }}>
-        <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>EL EQUIPO</p>
-          <h2 style={{
-            fontFamily: 'var(--font-h)', fontSize: 40, fontWeight: 700, color: 'var(--fg-light)',
-          }}>
-            Las personas detrás de Prisxel
-          </h2>
-        </div>
-        <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', width: '100%', justifyContent: 'center' }}>
-          {team.map(m => (
-            <div key={m.name} style={{
-              flex: '1 1 220px', maxWidth: 280,
-              display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16,
-            }}>
-              <div style={{
-                width: 120, height: 120, borderRadius: '50%',
-                background: 'var(--bg-slate)', border: '2px solid var(--border)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
+          {/* Cards de pasos */}
+          <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+            {steps.map((s, i) => (
+              <div key={s.num} style={{
+                flex: '1 1 200px',
+                background: 'var(--bg-slate)', border: '1px solid var(--border)',
+                borderRadius: i === 0 ? '14px 0 0 14px' : i === steps.length - 1 ? '0 14px 14px 0' : 0,
+                padding: '36px 28px',
+                display: 'flex', flexDirection: 'column', gap: 16,
               }}>
-                <span style={{ fontSize: 40, opacity: 0.3 }}>◆</span>
+                <p style={{
+                  fontFamily: 'var(--font-h)', fontSize: 48, fontWeight: 800,
+                  color: 'rgba(249,115,22,0.25)', lineHeight: 1,
+                }}>{s.num}</p>
+                <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--fg-light)' }}>{s.title}</h3>
+                <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7, flex: 1 }}>{s.desc}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--accent)' }}>
+                  <div style={{ width: 20, height: 2, background: 'var(--accent)' }} />
+                  <span style={{ fontSize: 16, fontWeight: 700 }}>→</span>
+                </div>
               </div>
-              <div style={{ textAlign: 'center' }}>
-                <p style={{ fontSize: 16, fontWeight: 600, color: 'var(--fg-light)' }}>{m.name}</p>
-                <p style={{ fontSize: 13, color: 'var(--fg-muted)', marginTop: 4 }}>{m.role}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── 5. QUOTE — imagen de fondo con texto ── */}
       <section style={{
-        background: 'var(--accent)', padding: '80px 60px',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24,
-        textAlign: 'center',
+        position: 'relative', minHeight: 340, overflow: 'hidden',
+        display: 'flex', alignItems: 'center',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'url(/images/portfolio-2.jpg) center/cover no-repeat',
+        }} />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(10,10,10,0.72)',
+        }} />
+        <div style={{
+          position: 'relative', zIndex: 1,
+          padding: '80px 60px', maxWidth: 700,
+        }}>
+          <p style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(22px, 3vw, 34px)',
+            fontWeight: 700, fontStyle: 'italic',
+            color: 'var(--fg-light)', lineHeight: 1.4, marginBottom: 20,
+          }}>
+            "Cada proyecto es una oportunidad de crear algo extraordinario."
+          </p>
+          <p style={{ fontSize: 14, color: 'var(--accent)', fontWeight: 600 }}>
+            — El equipo Prisxel
+          </p>
+        </div>
+      </section>
+
+      {/* ── 6. CTA ── */}
+      <section style={{
+        background: 'var(--bg-dark)', padding: '80px 60px',
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
+        gap: 24, textAlign: 'center',
+        borderTop: '1px solid var(--border)',
       }}>
         <h2 style={{
           fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 3vw, 44px)',
-          fontWeight: 700, color: 'var(--fg-light)', maxWidth: 700,
+          fontWeight: 700, color: 'var(--fg-light)',
         }}>
           ¿Listo para dar el siguiente paso?
         </h2>
+        <p style={{ fontSize: 16, color: 'var(--fg-muted)', maxWidth: 480 }}>
+          Cuéntanos tu proyecto y te mostramos cómo podemos transformarlo.
+        </p>
         <Link to="/cotizar" style={{
-          padding: '16px 40px', borderRadius: 9999,
-          background: 'var(--fg-light)', color: 'var(--fg-dark)',
-          fontSize: 14, fontWeight: 600,
+          padding: '14px 36px', borderRadius: 9999,
+          background: 'var(--accent)', color: 'var(--fg-light)',
+          fontSize: 15, fontWeight: 700,
         }}>
-          Cotizar proyecto
+          Cotizar proyecto →
         </Link>
       </section>
 
       <style>{`
         @media (max-width: 768px) {
-          section { padding: 60px 24px !important; flex-direction: column !important; }
-          section[style*='height: 600'] { height: auto !important; padding-top: 80px !important; padding-bottom: 60px !important; }
+          section[style*='grid'] {
+            grid-template-columns: 1fr !important;
+          }
+          section { padding: 60px 24px !important; }
         }
       `}</style>
     </div>
