@@ -184,7 +184,7 @@ export default function ServiceRenders() {
           Solicitar cotización
         </Link>
         <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: 3, color: 'rgba(255,255,255,0.8)' }}>
-          WWW.PRISXEL.COM
+          disenoprisxel@gmail.com
         </p>
       </section>
 

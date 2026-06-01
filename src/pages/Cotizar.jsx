@@ -79,8 +79,9 @@ export default function Cotizar() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 8 }}>
               {[
-                { icon: '📧', label: 'hola@prisxel.com' },
-                { icon: '🌐', label: 'www.prisxel.com' },
+                { icon: '📧', label: 'disenoprisxel@gmail.com' },
+                { icon: '📞', label: '317 358 1768' },
+                { icon: '📍', label: 'Calle 87 # 96-90' },
               ].map(c => (
                 <div key={c.label} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
                   <span style={{ fontSize: 18 }}>{c.icon}</span>
@@ -141,7 +142,7 @@ export default function Cotizar() {
                   <div style={{ flex: 1, minWidth: 160 }}>
                     <label style={labelStyle}>Teléfono</label>
                     <input name="telefono" value={form.telefono} onChange={handleChange}
-                      placeholder="+52 55 0000 0000" style={inputStyle} />
+                      placeholder="317 358 1768" style={inputStyle} />
                   </div>
                 </div>
 

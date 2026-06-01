@@ -1,17 +1,16 @@
 import { Link } from 'react-router-dom'
 
 const socials = [
-  { name: 'Instagram', handle: '@prisxel.studio', href: '#', icon: '📸' },
-  { name: 'Behance', handle: 'prisxel', href: '#', icon: '🎨' },
-  { name: 'LinkedIn', handle: 'Prisxel Studio', href: '#', icon: '💼' },
-  { name: 'YouTube', handle: '@prisxel', href: '#', icon: '▶️' },
+  { name: 'Instagram', handle: '@prisxel.studio', href: 'https://instagram.com/prisxel.studio', icon: '📸' },
+  { name: 'Behance', handle: 'prisxel', href: 'https://behance.net/prisxel', icon: '🎨' },
+  { name: 'LinkedIn', handle: 'Prisxel Studio', href: 'https://linkedin.com/company/prisxel', icon: '💼' },
 ]
 
 const contactInfo = [
-  { icon: '📧', label: 'Email', value: 'hola@prisxel.com', href: 'mailto:hola@prisxel.com' },
-  { icon: '💬', label: 'WhatsApp', value: '+52 55 0000 0000', href: 'https://wa.me/5255000000' },
+  { icon: '📧', label: 'Email', value: 'disenoprisxel@gmail.com', href: 'mailto:disenoprisxel@gmail.com' },
+  { icon: '💬', label: 'WhatsApp', value: '317 358 1768', href: 'https://wa.me/573173581768' },
+  { icon: '📍', label: 'Dirección', value: 'Calle 87 # 96-90', href: null },
   { icon: '🌐', label: 'Web', value: 'www.prisxel.com', href: 'https://www.prisxel.com' },
-  { icon: '📍', label: 'Ubicación', value: 'Latinoamérica · Remoto global', href: null },
 ]
 
 export default function Contacto() {
@@ -214,7 +213,7 @@ export default function Contacto() {
                 <p style={{ fontSize: 13, color: 'var(--fg-muted)', marginTop: 2 }}>Respuesta rápida en horario de oficina</p>
               </div>
             </div>
-            <a href="https://wa.me/5255000000" target="_blank" rel="noreferrer" style={{
+            <a href="https://wa.me/573173581768" target="_blank" rel="noreferrer" style={{
               display: 'block', textAlign: 'center',
               padding: '14px 28px', borderRadius: 9999,
               background: '#25D366', color: '#fff',
