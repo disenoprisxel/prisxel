@@ -127,6 +127,69 @@ export default function Contacto() {
 
       <div style={{ height: 1, background: 'var(--border)' }} />
 
+      {/* Mapa */}
+      <section style={{ background: 'var(--bg-dark)', padding: '80px 60px' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', gap: 60, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ flex: '1 1 320px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>UBICACIÓN</p>
+            <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2 }}>
+              Encuéntranos aquí
+            </h2>
+            <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.7 }}>
+              Estamos ubicados en Bogotá, Colombia. También trabajamos de forma remota con clientes en toda Latinoamérica.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 8 }}>
+              <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                <span style={{ fontSize: 18, marginTop: 1 }}>📍</span>
+                <div>
+                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-muted)', letterSpacing: 2, marginBottom: 4 }}>DIRECCIÓN</p>
+                  <p style={{ fontSize: 15, color: 'var(--fg-light)' }}>Calle 87 # 96-90, Bogotá, Colombia</p>
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                <span style={{ fontSize: 18, marginTop: 1 }}>📧</span>
+                <div>
+                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-muted)', letterSpacing: 2, marginBottom: 4 }}>EMAIL</p>
+                  <a href="mailto:disenoprisxel@gmail.com" style={{ fontSize: 15, color: 'var(--fg-light)', transition: 'color 0.2s' }} className="contact-link">
+                    disenoprisxel@gmail.com
+                  </a>
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                <span style={{ fontSize: 18, marginTop: 1 }}>📞</span>
+                <div>
+                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-muted)', letterSpacing: 2, marginBottom: 4 }}>TELÉFONO</p>
+                  <a href="tel:+573173581768" style={{ fontSize: 15, color: 'var(--fg-light)', transition: 'color 0.2s' }} className="contact-link">
+                    317 358 1768
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* iframe Google Maps */}
+          <div style={{
+            flex: '2 1 480px', borderRadius: 20, overflow: 'hidden',
+            border: '1px solid var(--border)',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+            minHeight: 420,
+          }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5270.664488042536!2d-74.10613690000001!3d4.718388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f84b9f4423ca5%3A0xf16c931fbd264ab8!2sCl.%2087%20%2396-90%2C%20Bogot%C3%A1!5e1!3m2!1ses-419!2sco!4v1780330966602!5m2!1ses-419!2sco"
+              width="100%"
+              height="420"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación Prisxel — Calle 87 # 96-90, Bogotá"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div style={{ height: 1, background: 'var(--border)' }} />
+
       {/* Socials + Llamada */}
       <section style={{
         background: 'var(--bg-slate)', padding: '100px 60px',
