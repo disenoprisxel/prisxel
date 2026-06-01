@@ -10,76 +10,90 @@ export default function Contacto() {
   return (
     <div>
 
-      {/* ── 1. HERO: título + imagen + 3 datos rápidos ── */}
-      <section style={{ position: 'relative', minHeight: 520, overflow: 'hidden' }}>
-        {/* Imagen de fondo */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'url(/images/service-arch.jpg) center/cover no-repeat',
-        }} />
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(90deg, rgba(10,10,10,0.97) 55%, rgba(10,10,10,0.3) 100%)',
-        }} />
+      {/* ── 1. HERO: split — contenido izq | imagen der ── */}
+      <section style={{ display: 'flex', minHeight: 600, overflow: 'hidden' }}>
 
+        {/* Lado izquierdo — contenido */}
         <div style={{
-          position: 'relative', zIndex: 1,
-          maxWidth: 1440, margin: '0 auto',
-          padding: '100px 60px',
-          display: 'flex', flexDirection: 'column', gap: 40, maxWidth: 680,
+          flex: 1, minWidth: 0,
+          background: 'var(--bg-dark)',
+          padding: '80px 60px',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 48,
         }}>
+          {/* Título */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 5, color: 'var(--accent)' }}>CONTACTO</p>
             <h1 style={{
-              fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 4vw, 56px)',
+              fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 3.5vw, 52px)',
               fontWeight: 700, lineHeight: 1.1, color: 'var(--fg-light)',
             }}>
-              Hablemos de tu proyecto
+              Hablemos de<br />tu proyecto
             </h1>
-            <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
+            <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.8, maxWidth: 380 }}>
               Estamos en Bogotá y trabajamos de forma remota con clientes en toda Latinoamérica.
             </p>
           </div>
 
-          {/* 3 datos en fila — solo aquí, una única vez */}
-          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
-            <a href="mailto:disenoprisxel@gmail.com" style={{
-              display: 'flex', gap: 12, alignItems: 'center',
-              color: 'var(--fg-light)', transition: 'color 0.2s',
-            }} className="contact-link">
-              <span style={{ fontSize: 20 }}>📧</span>
-              <span style={{ fontSize: 15 }}>disenoprisxel@gmail.com</span>
-            </a>
-            <a href="https://wa.me/573173581768" target="_blank" rel="noreferrer" style={{
-              display: 'flex', gap: 12, alignItems: 'center',
-              color: 'var(--fg-light)', transition: 'color 0.2s',
-            }} className="contact-link">
-              <span style={{ fontSize: 20 }}>💬</span>
-              <span style={{ fontSize: 15 }}>317 358 1768</span>
-            </a>
-            <div style={{ display: 'flex', gap: 12, alignItems: 'center', color: 'var(--fg-muted)' }}>
-              <span style={{ fontSize: 20 }}>📍</span>
-              <span style={{ fontSize: 15 }}>Calle 87 # 96-90, Bogotá</span>
-            </div>
+          {/* Datos de contacto — 3 items en columna, limpios */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 0, borderTop: '1px solid var(--border)' }}>
+            {[
+              { icon: '📧', label: 'Email', value: 'disenoprisxel@gmail.com', href: 'mailto:disenoprisxel@gmail.com' },
+              { icon: '💬', label: 'WhatsApp', value: '317 358 1768', href: 'https://wa.me/573173581768' },
+              { icon: '📍', label: 'Dirección', value: 'Calle 87 # 96-90, Bogotá', href: null },
+            ].map(c => (
+              <div key={c.label} style={{
+                display: 'flex', alignItems: 'center', gap: 20,
+                padding: '20px 0', borderBottom: '1px solid var(--border)',
+              }}>
+                <div style={{
+                  width: 40, height: 40, borderRadius: 10, flexShrink: 0,
+                  background: 'var(--bg-slate)', border: '1px solid var(--border)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 17,
+                }}>
+                  {c.icon}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontSize: 11, color: 'var(--fg-muted)', fontWeight: 600, letterSpacing: 2, marginBottom: 3 }}>
+                    {c.label.toUpperCase()}
+                  </p>
+                  {c.href
+                    ? <a href={c.href} style={{ fontSize: 15, color: 'var(--fg-light)', transition: 'color 0.2s' }} className="contact-link">{c.value}</a>
+                    : <p style={{ fontSize: 15, color: 'var(--fg-light)' }}>{c.value}</p>
+                  }
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+          {/* CTAs */}
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <Link to="/cotizar" style={{
-              padding: '14px 32px', borderRadius: 9999,
+              padding: '13px 28px', borderRadius: 9999,
               background: 'var(--accent)', color: 'var(--fg-light)',
               fontSize: 14, fontWeight: 700,
             }}>
               Cotizar proyecto →
             </Link>
             <a href="https://wa.me/573173581768" target="_blank" rel="noreferrer" style={{
-              padding: '14px 32px', borderRadius: 9999,
-              background: 'rgba(255,255,255,0.08)', color: 'var(--fg-light)',
+              padding: '13px 28px', borderRadius: 9999,
+              background: '#25D366', color: '#fff',
               fontSize: 14, fontWeight: 600,
-              border: '1px solid rgba(255,255,255,0.15)',
             }}>
               WhatsApp →
             </a>
           </div>
+        </div>
+
+        {/* Lado derecho — imagen */}
+        <div style={{
+          flex: 1, minWidth: 0,
+          background: 'url(/images/service-arch.jpg) center/cover no-repeat',
+          position: 'relative',
+        }}>
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(270deg, transparent 50%, rgba(10,10,10,0.25) 100%)',
+          }} />
         </div>
       </section>
 
