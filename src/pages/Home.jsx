@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect, useCallback } from 'react'
 
 const services = [
   {
@@ -33,48 +34,116 @@ const reasons = [
   { num: '03', title: 'Resultados medibles', desc: 'Nuestros proyectos generan impacto real: más visibilidad, más clientes, más valor para tu marca.' },
 ]
 
-export default function Home() {
+const slides = [
+  {
+    label: 'DISEÑO WEB',
+    title: 'Transformamos satisfacción en experiencias reales',
+    desc: 'Sitios web que convierten visitantes en clientes con diseño estratégico y alto rendimiento.',
+    href: '/servicios/diseno-web',
+    cta: 'Ver servicio',
+    image: '/images/service-web.jpg',
+  },
+  {
+    label: 'RENDERS ARQUITECTÓNICOS',
+    title: 'Visualizaciones fotorrealistas que enamoran antes de construir',
+    desc: 'Renders de alta calidad que dan vida a tus proyectos antes de que existan.',
+    href: '/servicios/renders',
+    cta: 'Ver servicio',
+    image: '/images/service-arch.jpg',
+  },
+  {
+    label: 'RECORRIDOS VIRTUALES',
+    title: 'Explora cada espacio antes de construirlo',
+    desc: 'Experiencias inmersivas en 3D que permiten navegar libremente por tus proyectos.',
+    href: '/servicios/recorridos-virtuales',
+    cta: 'Ver servicio',
+    image: '/images/slide-archviz.jpg',
+  },
+  {
+    label: 'MOTION Y VIDEO',
+    title: 'Tu marca en movimiento. Con impacto.',
+    desc: 'Animaciones y producción audiovisual que comunican tu marca con ritmo y precisión.',
+    href: '/servicios/motion-video',
+    cta: 'Ver servicio',
+    image: '/images/service-motion.jpg',
+  },
+]
+
+function HeroSlideshow() {
+  const [current, setCurrent] = useState(0)
+  const [animating, setAnimating] = useState(false)
+
+  const goTo = useCallback((index) => {
+    if (animating) return
+    setAnimating(true)
+    setTimeout(() => {
+      setCurrent(index)
+      setAnimating(false)
+    }, 300)
+  }, [animating])
+
+  // Auto-play cada 5 segundos
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent(prev => (prev + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const slide = slides[current]
+
   return (
-    <div>
-      {/* Hero */}
-      <section style={{
-        position: 'relative', height: '780px',
-        background: `url('/images/slide-archviz.jpg') center/cover no-repeat`,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        overflow: 'hidden',
+    <section style={{ position: 'relative', height: '780px', overflow: 'hidden' }}>
+      {/* Slides de fondo — todos montados, solo el activo visible */}
+      {slides.map((s, i) => (
+        <div key={i} style={{
+          position: 'absolute', inset: 0,
+          background: `url(${s.image}) center/cover no-repeat`,
+          opacity: i === current ? 1 : 0,
+          transition: 'opacity 0.7s ease',
+          zIndex: 0,
+        }} />
+      ))}
+
+      {/* Overlay gradiente */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        background: 'linear-gradient(180deg, #0A0A0A20 0%, #0A0A0A55 35%, #0A0A0ADD 70%, #0A0A0AF5 100%)',
+      }} />
+
+      {/* Contenido */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 2,
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        textAlign: 'center', padding: '0 24px',
       }}>
         <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(180deg, #0A0A0A20 0%, #0A0A0A55 35%, #0A0A0ADD 70%, #0A0A0AF5 100%)',
-        }} />
-        <div style={{
-          position: 'relative', zIndex: 1, textAlign: 'center',
-          maxWidth: 920, padding: '0 24px',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24,
+          maxWidth: 860,
+          opacity: animating ? 0 : 1,
+          transform: animating ? 'translateY(12px)' : 'translateY(0)',
+          transition: 'opacity 0.3s ease, transform 0.3s ease',
         }}>
-          <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: 5, color: 'var(--accent)' }}>
-            ESTUDIO DE DISEÑO DIGITAL
+          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 5, color: 'var(--accent)' }}>
+            {slide.label}
           </p>
           <h1 style={{
-            fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 5vw, 64px)',
-            fontWeight: 700, lineHeight: 1.1, letterSpacing: 1,
-            color: 'var(--fg-light)',
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(34px, 5vw, 64px)',
+            fontWeight: 700, lineHeight: 1.1, color: 'var(--fg-light)',
           }}>
-            Transformamos satisfacción en experiencias reales
+            {slide.title}
           </h1>
-          <p style={{
-            fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6,
-            maxWidth: 560,
-          }}>
-            Renders fotorrealistas que dan vida a tus proyectos antes de construirlos
+          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, maxWidth: 540 }}>
+            {slide.desc}
           </p>
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link to="/portafolio" style={{
+            <Link to={slide.href} style={{
               padding: '14px 36px', borderRadius: 9999,
               background: 'var(--accent)', color: 'var(--fg-light)',
               fontSize: 14, fontWeight: 600,
             }}>
-              Ver portafolio
+              {slide.cta}
             </Link>
             <Link to="/cotizar" style={{
               padding: '14px 36px', borderRadius: 9999,
@@ -86,7 +155,60 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Indicadores / dots */}
+      <div style={{
+        position: 'absolute', bottom: 36, left: 0, right: 0, zIndex: 3,
+        display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 10,
+      }}>
+        {slides.map((s, i) => (
+          <button key={i} onClick={() => goTo(i)} style={{
+            background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+          }}>
+            {/* Barra de progreso */}
+            <div style={{
+              width: i === current ? 40 : 20, height: 3, borderRadius: 9999,
+              background: i === current ? 'var(--accent)' : 'rgba(255,255,255,0.3)',
+              transition: 'all 0.35s ease',
+            }} />
+          </button>
+        ))}
+      </div>
+
+      {/* Flechas laterales */}
+      <button onClick={() => goTo((current - 1 + slides.length) % slides.length)} style={{
+        position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%)',
+        zIndex: 3, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
+        borderRadius: '50%', width: 48, height: 48, cursor: 'pointer',
+        color: 'white', fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        transition: 'background 0.2s',
+      }} className="hero-arrow">
+        ‹
+      </button>
+      <button onClick={() => goTo((current + 1) % slides.length)} style={{
+        position: 'absolute', right: 24, top: '50%', transform: 'translateY(-50%)',
+        zIndex: 3, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
+        borderRadius: '50%', width: 48, height: 48, cursor: 'pointer',
+        color: 'white', fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        transition: 'background 0.2s',
+      }} className="hero-arrow">
+        ›
+      </button>
+
+      <style>{`
+        .hero-arrow:hover { background: rgba(249,115,22,0.4) !important; border-color: var(--accent) !important; }
+      `}</style>
+    </section>
+  )
+}
+
+export default function Home() {
+  return (
+    <div>
+      {/* Hero Slideshow */}
+      <HeroSlideshow />
 
       <div style={{ height: 1, background: 'var(--border)' }} />
 
