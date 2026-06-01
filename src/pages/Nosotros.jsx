@@ -55,6 +55,41 @@ export default function Nosotros() {
   return (
     <div>
 
+      {/* ── 0. HERO ── */}
+      <section style={{
+        position: 'relative', minHeight: 540, overflow: 'hidden',
+        display: 'flex', alignItems: 'flex-end',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'url(/images/portfolio-2.jpg) center/cover no-repeat',
+        }} />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(90deg, rgba(10,10,10,0.82) 45%, rgba(10,10,10,0.35) 100%)',
+        }} />
+        <div style={{
+          position: 'relative', zIndex: 1,
+          padding: '80px 60px',
+          display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 720,
+        }}>
+          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 5, color: 'var(--accent)' }}>
+            NOSOTROS
+          </p>
+          <h1 style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 4.5vw, 60px)',
+            fontWeight: 700, lineHeight: 1.1, color: 'var(--fg-light)',
+          }}>
+            Creamos experiencias digitales que transforman tu visión en realidad
+          </h1>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, maxWidth: 520 }}>
+            Somos un estudio creativo en Bogotá especializado en diseño web, visualización arquitectónica y producción audiovisual.
+          </p>
+        </div>
+      </section>
+
+      <div style={{ height: 1, background: 'var(--border)' }} />
+
       {/* ── 1. MISIÓN / VISIÓN — grid 2×2 ── */}
       <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: 'auto auto' }}>
 
