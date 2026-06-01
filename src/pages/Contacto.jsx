@@ -6,105 +6,87 @@ const socials = [
   { name: 'LinkedIn', handle: 'Prisxel Studio', href: 'https://linkedin.com/company/prisxel', icon: '💼' },
 ]
 
-const contactInfo = [
-  { icon: '📧', label: 'Email', value: 'disenoprisxel@gmail.com', href: 'mailto:disenoprisxel@gmail.com' },
-  { icon: '💬', label: 'WhatsApp', value: '317 358 1768', href: 'https://wa.me/573173581768' },
-  { icon: '📍', label: 'Dirección', value: 'Calle 87 # 96-90', href: null },
-  { icon: '🌐', label: 'Web', value: 'www.prisxel.com', href: 'https://www.prisxel.com' },
-]
-
 export default function Contacto() {
   return (
     <div>
-      {/* Hero split */}
-      <section style={{ display: 'flex', minHeight: 600, overflow: 'hidden' }}>
+
+      {/* ── 1. HERO: título + imagen + 3 datos rápidos ── */}
+      <section style={{ position: 'relative', minHeight: 520, overflow: 'hidden' }}>
+        {/* Imagen de fondo */}
         <div style={{
-          flex: 1, background: 'var(--bg-dark)', padding: '80px 60px',
-          display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 36,
+          position: 'absolute', inset: 0,
+          background: 'url(/images/service-arch.jpg) center/cover no-repeat',
+        }} />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(90deg, rgba(10,10,10,0.97) 55%, rgba(10,10,10,0.3) 100%)',
+        }} />
+
+        <div style={{
+          position: 'relative', zIndex: 1,
+          maxWidth: 1440, margin: '0 auto',
+          padding: '100px 60px',
+          display: 'flex', flexDirection: 'column', gap: 40, maxWidth: 680,
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 5, color: 'var(--accent)' }}>CONTACTO</p>
             <h1 style={{
-              fontFamily: 'var(--font-h)', fontSize: 'clamp(32px, 4vw, 52px)',
+              fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 4vw, 56px)',
               fontWeight: 700, lineHeight: 1.1, color: 'var(--fg-light)',
             }}>
               Hablemos de tu proyecto
             </h1>
-            <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.8, maxWidth: 440 }}>
-              Estamos listos para escucharte. Escríbenos, llámanos o agenda una llamada — como prefieras.
+            <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
+              Estamos en Bogotá y trabajamos de forma remota con clientes en toda Latinoamérica.
             </p>
           </div>
 
-          {/* Contact info */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {contactInfo.map(c => (
-              <div key={c.label} style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-                <div style={{
-                  width: 44, height: 44, borderRadius: 12, flexShrink: 0,
-                  background: 'var(--bg-slate)', border: '1px solid var(--border)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 18,
-                }}>
-                  {c.icon}
-                </div>
-                <div>
-                  <p style={{ fontSize: 11, color: 'var(--fg-muted)', fontWeight: 600, letterSpacing: 2, marginBottom: 2 }}>
-                    {c.label.toUpperCase()}
-                  </p>
-                  {c.href ? (
-                    <a href={c.href} style={{ fontSize: 15, color: 'var(--fg-light)', transition: 'color 0.2s' }}
-                      className="contact-link">
-                      {c.value}
-                    </a>
-                  ) : (
-                    <p style={{ fontSize: 15, color: 'var(--fg-light)' }}>{c.value}</p>
-                  )}
-                </div>
-              </div>
-            ))}
+          {/* 3 datos en fila — solo aquí, una única vez */}
+          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+            <a href="mailto:disenoprisxel@gmail.com" style={{
+              display: 'flex', gap: 12, alignItems: 'center',
+              color: 'var(--fg-light)', transition: 'color 0.2s',
+            }} className="contact-link">
+              <span style={{ fontSize: 20 }}>📧</span>
+              <span style={{ fontSize: 15 }}>disenoprisxel@gmail.com</span>
+            </a>
+            <a href="https://wa.me/573173581768" target="_blank" rel="noreferrer" style={{
+              display: 'flex', gap: 12, alignItems: 'center',
+              color: 'var(--fg-light)', transition: 'color 0.2s',
+            }} className="contact-link">
+              <span style={{ fontSize: 20 }}>💬</span>
+              <span style={{ fontSize: 15 }}>317 358 1768</span>
+            </a>
+            <div style={{ display: 'flex', gap: 12, alignItems: 'center', color: 'var(--fg-muted)' }}>
+              <span style={{ fontSize: 20 }}>📍</span>
+              <span style={{ fontSize: 15 }}>Calle 87 # 96-90, Bogotá</span>
+            </div>
           </div>
 
-          {/* CTA cotizar */}
-          <div style={{
-            background: 'var(--bg-slate)', border: '1px solid var(--border)',
-            borderRadius: 16, padding: 24,
-            display: 'flex', flexDirection: 'column', gap: 16,
-          }}>
-            <div>
-              <p style={{ fontSize: 15, fontWeight: 600, color: 'var(--fg-light)', marginBottom: 6 }}>
-                ¿Quieres iniciar un proyecto?
-              </p>
-              <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.6 }}>
-                Completa nuestro formulario de cotización y te respondemos en menos de 24 horas con una propuesta personalizada.
-              </p>
-            </div>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             <Link to="/cotizar" style={{
-              display: 'inline-block', textAlign: 'center',
-              padding: '13px 28px', borderRadius: 9999,
+              padding: '14px 32px', borderRadius: 9999,
               background: 'var(--accent)', color: 'var(--fg-light)',
               fontSize: 14, fontWeight: 700,
             }}>
               Cotizar proyecto →
             </Link>
+            <a href="https://wa.me/573173581768" target="_blank" rel="noreferrer" style={{
+              padding: '14px 32px', borderRadius: 9999,
+              background: 'rgba(255,255,255,0.08)', color: 'var(--fg-light)',
+              fontSize: 14, fontWeight: 600,
+              border: '1px solid rgba(255,255,255,0.15)',
+            }}>
+              WhatsApp →
+            </a>
           </div>
-        </div>
-
-        <div style={{
-          flex: 1, overflow: 'hidden',
-          background: 'url(/images/service-arch.jpg) center/cover no-repeat',
-          position: 'relative', minHeight: 400,
-        }}>
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(270deg, transparent 40%, rgba(10,10,10,0.4) 100%)',
-          }} />
         </div>
       </section>
 
       <div style={{ height: 1, background: 'var(--border)' }} />
 
-      {/* Stats */}
-      <section style={{ background: 'var(--bg-navy)', padding: '40px 60px' }}>
+      {/* ── 2. STATS ── */}
+      <section style={{ background: 'var(--bg-navy)', padding: '36px 60px' }}>
         <div style={{
           maxWidth: 1440, margin: '0 auto',
           display: 'flex', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap',
@@ -115,8 +97,8 @@ export default function Contacto() {
             { label: 'Países de operación', value: '4+' },
             { label: 'Satisfacción', value: '100%' },
           ].map(s => (
-            <div key={s.label} style={{ flex: '1 1 160px', textAlign: 'center' }}>
-              <p style={{ fontFamily: 'var(--font-h)', fontSize: 36, fontWeight: 700, color: 'var(--accent)' }}>
+            <div key={s.label} style={{ flex: '1 1 140px', textAlign: 'center' }}>
+              <p style={{ fontFamily: 'var(--font-h)', fontSize: 34, fontWeight: 700, color: 'var(--accent)' }}>
                 {s.value}
               </p>
               <p style={{ fontSize: 13, color: 'var(--fg-muted)', marginTop: 4 }}>{s.label}</p>
@@ -127,57 +109,24 @@ export default function Contacto() {
 
       <div style={{ height: 1, background: 'var(--border)' }} />
 
-      {/* Mapa */}
+      {/* ── 3. MAPA (sin lista de datos — ya están arriba) ── */}
       <section style={{ background: 'var(--bg-dark)', padding: '80px 60px' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', gap: 60, flexWrap: 'wrap', alignItems: 'center' }}>
-          <div style={{ flex: '1 1 320px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 32 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>UBICACIÓN</p>
-            <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2 }}>
-              Encuéntranos aquí
+            <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)' }}>
+              Calle 87 # 96-90, Bogotá
             </h2>
-            <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.7 }}>
-              Estamos ubicados en Bogotá, Colombia. También trabajamos de forma remota con clientes en toda Latinoamérica.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 8 }}>
-              <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                <span style={{ fontSize: 18, marginTop: 1 }}>📍</span>
-                <div>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-muted)', letterSpacing: 2, marginBottom: 4 }}>DIRECCIÓN</p>
-                  <p style={{ fontSize: 15, color: 'var(--fg-light)' }}>Calle 87 # 96-90, Bogotá, Colombia</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                <span style={{ fontSize: 18, marginTop: 1 }}>📧</span>
-                <div>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-muted)', letterSpacing: 2, marginBottom: 4 }}>EMAIL</p>
-                  <a href="mailto:disenoprisxel@gmail.com" style={{ fontSize: 15, color: 'var(--fg-light)', transition: 'color 0.2s' }} className="contact-link">
-                    disenoprisxel@gmail.com
-                  </a>
-                </div>
-              </div>
-              <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                <span style={{ fontSize: 18, marginTop: 1 }}>📞</span>
-                <div>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-muted)', letterSpacing: 2, marginBottom: 4 }}>TELÉFONO</p>
-                  <a href="tel:+573173581768" style={{ fontSize: 15, color: 'var(--fg-light)', transition: 'color 0.2s' }} className="contact-link">
-                    317 358 1768
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
-
-          {/* iframe Google Maps */}
           <div style={{
-            flex: '2 1 480px', borderRadius: 20, overflow: 'hidden',
+            borderRadius: 20, overflow: 'hidden',
             border: '1px solid var(--border)',
             boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-            minHeight: 420,
           }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5270.664488042536!2d-74.10613690000001!3d4.718388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f84b9f4423ca5%3A0xf16c931fbd264ab8!2sCl.%2087%20%2396-90%2C%20Bogot%C3%A1!5e1!3m2!1ses-419!2sco!4v1780330966602!5m2!1ses-419!2sco"
               width="100%"
-              height="420"
+              height="440"
               style={{ border: 0, display: 'block' }}
               allowFullScreen=""
               loading="lazy"
@@ -190,34 +139,32 @@ export default function Contacto() {
 
       <div style={{ height: 1, background: 'var(--border)' }} />
 
-      {/* Socials + Llamada */}
+      {/* ── 4. REDES + LLAMADA en una sola sección ── */}
       <section style={{
-        background: 'var(--bg-slate)', padding: '100px 60px',
-        display: 'flex', gap: 80, flexWrap: 'wrap', alignItems: 'flex-start',
+        background: 'var(--bg-slate)', padding: '80px 60px',
+        display: 'flex', gap: 60, flexWrap: 'wrap', alignItems: 'flex-start',
       }}>
-        {/* Redes sociales */}
-        <div style={{ flex: '1 1 380px', display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {/* Redes */}
+        <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>SÍGUENOS</p>
-            <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)' }}>
-              Encuéntranos en redes
+            <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 28, fontWeight: 700, color: 'var(--fg-light)' }}>
+              Nuestro trabajo en redes
             </h2>
-            <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.7 }}>
-              Mira nuestro trabajo en tiempo real, procesos creativos y proyectos en curso.
+            <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7 }}>
+              Procesos creativos, proyectos en curso y resultados finales.
             </p>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {socials.map(s => (
-              <a key={s.name} href={s.href} style={{
+              <a key={s.name} href={s.href} target="_blank" rel="noreferrer" style={{
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                padding: '18px 24px', borderRadius: 14,
+                padding: '16px 20px', borderRadius: 12,
                 background: 'var(--bg-dark)', border: '1px solid var(--border)',
-                color: 'var(--fg-light)', transition: 'border-color 0.2s, transform 0.15s',
-              }}
-                className="social-link"
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <span style={{ fontSize: 22 }}>{s.icon}</span>
+                color: 'var(--fg-light)', transition: 'border-color 0.2s',
+              }} className="social-link">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <span style={{ fontSize: 20 }}>{s.icon}</span>
                   <span style={{ fontSize: 15, fontWeight: 600 }}>{s.name}</span>
                 </div>
                 <span style={{ fontSize: 13, color: 'var(--fg-muted)' }}>{s.handle}</span>
@@ -226,63 +173,39 @@ export default function Contacto() {
           </div>
         </div>
 
-        {/* Llamada + mapa/disponibilidad */}
-        <div style={{ flex: '1 1 380px', display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {/* Llamada */}
+        <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>AGENDA UNA LLAMADA</p>
-            <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)' }}>
-              Prefiero hablar contigo
+            <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 28, fontWeight: 700, color: 'var(--fg-light)' }}>
+              ¿Prefieres hablar?
             </h2>
-            <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.7 }}>
-              Agenda una videollamada de 30 minutos sin compromiso. Analizamos tu proyecto y te orientamos sobre la mejor solución.
+            <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7 }}>
+              Videollamada de 30 min gratuita, sin compromiso. Analizamos tu proyecto juntos.
             </p>
           </div>
-
           <div style={{
             background: 'var(--bg-dark)', border: '1px solid var(--border)',
-            borderRadius: 16, padding: 32, display: 'flex', flexDirection: 'column', gap: 20,
+            borderRadius: 16, padding: 28, display: 'flex', flexDirection: 'column', gap: 16,
           }}>
             {[
               { icon: '⏱', text: '30 minutos de sesión gratuita' },
-              { icon: '📹', text: 'Videollamada por Zoom o Meet' },
+              { icon: '📹', text: 'Zoom o Google Meet' },
               { icon: '✅', text: 'Sin compromiso, 100% informativa' },
             ].map(item => (
-              <div key={item.text} style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-                <span style={{ fontSize: 20 }}>{item.icon}</span>
-                <span style={{ fontSize: 15, color: 'var(--fg-muted)' }}>{item.text}</span>
+              <div key={item.text} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                <span style={{ fontSize: 18 }}>{item.icon}</span>
+                <span style={{ fontSize: 14, color: 'var(--fg-muted)' }}>{item.text}</span>
               </div>
             ))}
             <a href="#" style={{
-              display: 'block', textAlign: 'center',
-              padding: '14px 28px', borderRadius: 9999,
+              display: 'block', textAlign: 'center', marginTop: 4,
+              padding: '13px 24px', borderRadius: 9999,
               background: 'var(--bg-slate)', border: '1px solid var(--border)',
               fontSize: 14, fontWeight: 700, color: 'var(--fg-light)',
-              marginTop: 8, transition: 'border-color 0.2s',
-            }}
-              className="social-link"
-            >
+              transition: 'border-color 0.2s',
+            }} className="social-link">
               Agendar llamada →
-            </a>
-          </div>
-
-          <div style={{
-            background: 'var(--bg-dark)', border: '1px solid var(--border)',
-            borderRadius: 16, padding: 32, display: 'flex', flexDirection: 'column', gap: 16,
-          }}>
-            <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-              <span style={{ fontSize: 24 }}>💬</span>
-              <div>
-                <p style={{ fontSize: 15, fontWeight: 600, color: 'var(--fg-light)' }}>WhatsApp directo</p>
-                <p style={{ fontSize: 13, color: 'var(--fg-muted)', marginTop: 2 }}>Respuesta rápida en horario de oficina</p>
-              </div>
-            </div>
-            <a href="https://wa.me/573173581768" target="_blank" rel="noreferrer" style={{
-              display: 'block', textAlign: 'center',
-              padding: '14px 28px', borderRadius: 9999,
-              background: '#25D366', color: '#fff',
-              fontSize: 14, fontWeight: 700,
-            }}>
-              Escribir por WhatsApp →
             </a>
           </div>
         </div>
@@ -292,8 +215,8 @@ export default function Contacto() {
         .contact-link:hover { color: var(--accent) !important; }
         .social-link:hover { border-color: var(--accent) !important; }
         @media (max-width: 768px) {
-          section { flex-direction: column !important; padding: 60px 24px !important; }
-          section > div[style*='flex: 1']:last-child { min-height: 300px; }
+          section { padding: 60px 24px !important; }
+          section > div[style*='gap: 32'] { flex-direction: column !important; }
         }
       `}</style>
     </div>
