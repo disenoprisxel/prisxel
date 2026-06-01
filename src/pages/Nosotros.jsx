@@ -303,10 +303,9 @@ export default function Nosotros() {
 
       {/* ── 6. CTA ── */}
       <section style={{
-        background: 'var(--bg-dark)', padding: '80px 60px',
+        background: 'var(--accent)', padding: '80px 60px',
         display: 'flex', flexDirection: 'column', alignItems: 'center',
         gap: 24, textAlign: 'center',
-        borderTop: '1px solid var(--border)',
       }}>
         <h2 style={{
           fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 3vw, 44px)',
@@ -314,12 +313,12 @@ export default function Nosotros() {
         }}>
           ¿Listo para dar el siguiente paso?
         </h2>
-        <p style={{ fontSize: 16, color: 'var(--fg-muted)', maxWidth: 480 }}>
+        <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.85)', maxWidth: 480 }}>
           Cuéntanos tu proyecto y te mostramos cómo podemos transformarlo.
         </p>
         <Link to="/cotizar" style={{
           padding: '14px 36px', borderRadius: 9999,
-          background: 'var(--accent)', color: 'var(--fg-light)',
+          background: 'var(--fg-light)', color: 'var(--fg-dark)',
           fontSize: 15, fontWeight: 700,
         }}>
           Cotizar proyecto →
