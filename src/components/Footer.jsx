@@ -62,11 +62,8 @@ export default function Footer() {
         padding: '28px 60px', gap: 32, flexWrap: 'wrap',
       }}>
         {/* Logo */}
-        <Link to="/" style={{
-          fontFamily: 'var(--font-h)', fontSize: 18, fontWeight: 800,
-          letterSpacing: 6, color: 'var(--fg-light)',
-        }}>
-          PRISXEL
+        <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/logo-blanco.png" alt="Prisxel" style={{ height: 40, width: 'auto' }} />
         </Link>
 
         {/* Nav links */}

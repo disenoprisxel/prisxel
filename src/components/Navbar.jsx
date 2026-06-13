@@ -30,11 +30,8 @@ export default function Navbar() {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '18px 60px', maxWidth: '1440px', margin: '0 auto',
         }}>
-          <Link to="/" style={{
-            fontFamily: 'var(--font-h)', fontSize: 20, fontWeight: 800,
-            letterSpacing: 6, color: 'var(--fg-light)',
-          }}>
-            PRISXEL
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img src="/logo.png" alt="Prisxel" style={{ height: 36, width: 'auto' }} />
           </Link>
 
           {/* Desktop Nav */}
