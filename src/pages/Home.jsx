@@ -24,7 +24,7 @@ const services = [
     title: 'Motion y Video',
     desc: 'Animaciones y producción audiovisual que comunican tu marca con movimiento e impacto.',
     href: '/servicios/motion-video',
-    image: null,
+    image: '/images/service-motion-home.jpg',
   },
 ]
 
