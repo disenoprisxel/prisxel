@@ -49,7 +49,7 @@ const slides = [
     desc: 'Renders de alta calidad que dan vida a tus proyectos antes de que existan.',
     href: '/servicios/renders',
     cta: 'Ver servicio',
-    image: '/images/service-arch.jpg',
+    image: '/images/slide-renders.jpg',
   },
   {
     label: 'RECORRIDOS VIRTUALES',
