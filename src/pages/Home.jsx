@@ -6,25 +6,25 @@ const services = [
     title: 'Diseño Web',
     desc: 'Sitios web que convierten visitantes en clientes. Diseño estratégico y desarrollo de alto rendimiento.',
     href: '/servicios/diseno-web',
-    bg: 'linear-gradient(135deg, #1a1a3a66, #0A0A0A99)',
+    image: '/images/service-web-home.jpg',
   },
   {
     title: 'Renders Arquitectónicos',
     desc: 'Visualizaciones fotorrealistas que dan vida a tus proyectos antes de construirlos.',
     href: '/servicios/renders',
-    bg: 'linear-gradient(135deg, #2a1a0a66, #0A0A0A99)',
+    image: null,
   },
   {
     title: 'Recorridos Virtuales',
     desc: 'Experiencias inmersivas que permiten explorar espacios antes de que existan.',
     href: '/servicios/recorridos-virtuales',
-    bg: 'linear-gradient(135deg, #0a2a1a66, #0A0A0A99)',
+    image: null,
   },
   {
     title: 'Motion y Video',
     desc: 'Animaciones y producción audiovisual que comunican tu marca con movimiento e impacto.',
     href: '/servicios/motion-video',
-    bg: 'linear-gradient(135deg, #0a1a2a66, #0A0A0A99)',
+    image: null,
   },
 ]
 
@@ -238,16 +238,21 @@ export default function Home() {
             flexDirection: i % 2 === 0 ? 'row' : 'row-reverse',
           }}>
             <div style={{
-              flex: 1, borderRadius: 12,
-              background: s.bg, height: '100%',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              overflow: 'hidden',
+              flex: 1, borderRadius: 12, height: '100%', overflow: 'hidden',
+              background: s.image
+                ? `url(${s.image}) center/cover no-repeat`
+                : 'linear-gradient(135deg, var(--bg-slate), var(--bg-dark))',
+              display: s.image ? 'block' : 'flex',
+              alignItems: 'center', justifyContent: 'center',
+              border: '1px solid var(--border)',
             }}>
-              <div style={{
-                width: '80%', height: '60%', borderRadius: 8,
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.08)',
-              }} />
+              {!s.image && (
+                <div style={{
+                  width: '80%', height: '60%', borderRadius: 8,
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                }} />
+              )}
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
               <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>
