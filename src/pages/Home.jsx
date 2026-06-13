@@ -18,7 +18,7 @@ const services = [
     title: 'Recorridos Virtuales',
     desc: 'Experiencias inmersivas que permiten explorar espacios antes de que existan.',
     href: '/servicios/recorridos-virtuales',
-    image: null,
+    image: '/images/service-rv-home.jpg',
   },
   {
     title: 'Motion y Video',
