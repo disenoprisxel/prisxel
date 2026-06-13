@@ -13,7 +13,7 @@ const cases = {
     deliverables: 'Sitio web corporativo completo',
     url: 'https://www.graderiasgrs.com',
     tags: ['Diseño Web', 'Portafolio de Proyectos', 'Filtros Dinámicos', 'Catálogo de Productos'],
-    image: null,
+    image: '/images/caso-grs-hero.jpg',
     context: 'Graderías y Escenarios GRS es una empresa con más de 25 años en el mercado nacional dedicada a la venta y alquiler de graderías modulares en aluminio y hierro, tarimas, vallas y palcos de honor para eventos masivos, deportivos, culturales y privados a nivel nacional.',
     before: 'GRS contaba con un sitio web a medio hacer: sin información detallada de sus productos, sin especificaciones técnicas y sin un portafolio que mostrara la magnitud de los proyectos que han desarrollado durante más de dos décadas. Una empresa de ese calibre merecía una presencia digital a la altura.',
     challenge: 'El reto principal era mostrar la enorme cantidad de información que tiene para ofrecer la empresa: una diversidad amplia de productos, servicios especializados y proyectos de renombre en todo el país — todo esto de forma ordenada, visualmente atractiva y fácil de navegar.',
