@@ -41,7 +41,7 @@ const slides = [
     desc: 'Diseño que convierte.',
     href: '/servicios/diseno-web',
     cta: 'Ver servicio',
-    image: '/images/service-web.jpg',
+    image: '/images/slide-web.jpg',
   },
   {
     label: 'RENDERS ARQUITECTÓNICOS',
