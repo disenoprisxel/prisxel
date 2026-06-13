@@ -57,6 +57,7 @@ const slides = [
     desc: 'Espacios inmersivos en 3D.',
     href: '/servicios/recorridos-virtuales',
     cta: 'Ver servicio',
+    video: '/images/slide-rv.mp4',
     image: '/images/slide-archviz.jpg',
   },
   {
@@ -98,11 +99,25 @@ function HeroSlideshow() {
       {slides.map((s, i) => (
         <div key={i} style={{
           position: 'absolute', inset: 0,
-          background: `url(${s.image}) center/cover no-repeat`,
           opacity: i === current ? 1 : 0,
           transition: 'opacity 0.7s ease',
           zIndex: 0,
-        }} />
+        }}>
+          {s.video ? (
+            <video
+              autoPlay muted loop playsInline
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              poster={s.image}
+            >
+              <source src={s.video} type="video/mp4" />
+            </video>
+          ) : (
+            <div style={{
+              width: '100%', height: '100%',
+              background: `url(${s.image}) center/cover no-repeat`,
+            }} />
+          )}
+        </div>
       ))}
 
       {/* Overlay gradiente */}
