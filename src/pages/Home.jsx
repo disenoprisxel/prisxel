@@ -66,6 +66,7 @@ const slides = [
     desc: 'Animación con propósito.',
     href: '/servicios/motion-video',
     cta: 'Ver servicio',
+    video: '/images/slide-motion.mp4',
     image: '/images/service-motion.jpg',
   },
 ]
