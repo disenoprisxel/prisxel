@@ -12,7 +12,7 @@ const services = [
     title: 'Renders Arquitectónicos',
     desc: 'Visualizaciones fotorrealistas que dan vida a tus proyectos antes de construirlos.',
     href: '/servicios/renders',
-    image: null,
+    image: '/images/service-renders-home.jpg',
   },
   {
     title: 'Recorridos Virtuales',
