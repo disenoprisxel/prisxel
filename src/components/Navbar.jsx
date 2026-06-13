@@ -23,8 +23,15 @@ export default function Navbar() {
     <>
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-        background: 'rgba(10,10,10,0.95)', backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid var(--border)',
+        background: 'rgba(10,10,10,0.88)',
+        backdropFilter: 'blur(16px)',
+        backgroundImage: `
+          radial-gradient(ellipse at 20% 50%, rgba(249,115,22,0.06) 0%, transparent 60%),
+          radial-gradient(ellipse at 80% 50%, rgba(249,115,22,0.04) 0%, transparent 60%),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E")
+        `,
+        borderBottom: '2px solid var(--accent)',
+        boxShadow: '0 2px 24px rgba(249,115,22,0.15), 0 1px 0 rgba(249,115,22,0.3)',
       }}>
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
