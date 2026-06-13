@@ -31,7 +31,7 @@ export default function Navbar() {
           padding: '18px 60px', maxWidth: '1440px', margin: '0 auto',
         }}>
           <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-            <img src="/logo.png" alt="Prisxel" style={{ height: 36, width: 'auto' }} />
+            <img src="/logo-blanco.png" alt="Prisxel" style={{ height: 54, width: 'auto' }} />
           </Link>
 
           {/* Desktop Nav */}

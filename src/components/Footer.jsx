@@ -63,7 +63,7 @@ export default function Footer() {
       }}>
         {/* Logo */}
         <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/logo-blanco.png" alt="Prisxel" style={{ height: 40, width: 'auto' }} />
+          <img src="/logo-blanco.png" alt="Prisxel" style={{ height: 60, width: 'auto' }} />
         </Link>
 
         {/* Nav links */}
