@@ -37,6 +37,17 @@ const projects = [
     image: null,
     featured: true,
   },
+  {
+    id: 'arkeim',
+    title: 'Arkeím Studio',
+    category: 'Diseño Web',
+    type: 'Diseño Web',
+    year: '2025',
+    url: 'https://www.arkeimstudio.com',
+    desc: 'Sitio web para firma de arquitectura con más de 8 años de trayectoria y 120+ proyectos entregados, con visor 3D interactivo de modelos arquitectónicos y galería de proyectos.',
+    image: null,
+    featured: true,
+  },
 ]
 
 const PlaceholderCard = ({ project, size = 'md' }) => {
@@ -201,12 +212,14 @@ export default function Portafolio() {
                       </a>
                       <Link to={`/portafolio/caso/${p.id}`} style={{
                         padding: '11px 24px', borderRadius: 9999,
-                        background: 'transparent', color: 'var(--fg-muted)',
-                        fontSize: 14, fontWeight: 500,
-                        border: '1px solid var(--border)',
-                        transition: 'color 0.2s, border-color 0.2s',
+                        background: hovered === p.id ? 'var(--accent)' : 'transparent',
+                        color: hovered === p.id ? 'var(--fg-light)' : 'var(--accent)',
+                        fontSize: 14, fontWeight: 600,
+                        border: '1.5px solid var(--accent)',
+                        display: 'inline-flex', alignItems: 'center', gap: 6,
+                        transition: 'background 0.2s, color 0.2s',
                       }}>
-                        Caso de estudio
+                        Ver retos del proyecto →
                       </Link>
                     </div>
                   </div>

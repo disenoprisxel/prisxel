@@ -80,12 +80,41 @@ const cases = {
     features: [],
     results: [],
   },
+  arkeim: {
+    title: 'Arkeím Studio',
+    subtitle: 'Diseño Web · 2025',
+    client: 'Arkeím Studio',
+    industry: 'Arquitectura y Construcción',
+    location: 'Bogotá, Colombia',
+    service: 'Diseño Web',
+    year: '2025',
+    duration: 'Próximamente',
+    deliverables: 'Sitio web corporativo con visor 3D',
+    url: 'https://www.arkeimstudio.com',
+    tags: ['Diseño Web', 'Arquitectura', 'Visualización 3D'],
+    image: null,
+    context: 'Arkeím Studio es una firma de arquitectura con sede en Bogotá, fundada en 2017, especializada en diseño arquitectónico residencial, comercial e institucional, coordinación BIM multidisciplinaria, visualización arquitectónica (renders, recorridos virtuales y animaciones), gestión de licencias y ejecución de obra. Más de 8 años de trayectoria y 120+ proyectos entregados.',
+    before: 'Caso de estudio en construcción.',
+    challenge: 'Próximamente.',
+    objectives: [],
+    solution: 'Próximamente.',
+    features: [
+      'Visor 3D interactivo de modelos arquitectónicos',
+      'Galería de proyectos con lightbox',
+      'Páginas de proyecto individuales tipo caso de estudio',
+      'Animaciones de scroll, transiciones y cursor personalizado',
+      'Formulario de contacto protegido contra bots',
+      'Botón directo de contacto por WhatsApp',
+    ],
+    results: [],
+  },
 }
 
 const otherProjects = {
-  grs:      [{ id: 'unictech', title: 'Unictech S.A.S.', type: 'Diseño Web' }, { id: 'cognyvita', title: 'CognyVita', type: 'Diseño Web' }],
-  unictech: [{ id: 'grs', title: 'Graderías GRS', type: 'Diseño Web' }, { id: 'cognyvita', title: 'CognyVita', type: 'Diseño Web' }],
-  cognyvita:[{ id: 'grs', title: 'Graderías GRS', type: 'Diseño Web' }, { id: 'unictech', title: 'Unictech S.A.S.', type: 'Diseño Web' }],
+  grs:      [{ id: 'unictech', title: 'Unictech S.A.S.', type: 'Diseño Web' }, { id: 'cognyvita', title: 'CognyVita', type: 'Diseño Web' }, { id: 'arkeim', title: 'Arkeím Studio', type: 'Diseño Web' }],
+  unictech: [{ id: 'grs', title: 'Graderías GRS', type: 'Diseño Web' }, { id: 'cognyvita', title: 'CognyVita', type: 'Diseño Web' }, { id: 'arkeim', title: 'Arkeím Studio', type: 'Diseño Web' }],
+  cognyvita:[{ id: 'grs', title: 'Graderías GRS', type: 'Diseño Web' }, { id: 'unictech', title: 'Unictech S.A.S.', type: 'Diseño Web' }, { id: 'arkeim', title: 'Arkeím Studio', type: 'Diseño Web' }],
+  arkeim:   [{ id: 'grs', title: 'Graderías GRS', type: 'Diseño Web' }, { id: 'unictech', title: 'Unictech S.A.S.', type: 'Diseño Web' }, { id: 'cognyvita', title: 'CognyVita', type: 'Diseño Web' }],
 }
 
 export default function CasoEstudio() {
