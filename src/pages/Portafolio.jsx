@@ -12,7 +12,7 @@ const projects = [
     year: '2026',
     url: 'https://cognyvita.com',
     desc: 'Sitio web para equipo de profesionales en neuropsicología clínica y educativa, que combina rigor científico con enfoque humano y cercano.',
-    image: null,
+    image: '/images/card-cognyvita.png',
     featured: true,
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     year: '2026',
     url: 'https://www.arkeimstudio.com',
     desc: 'Sitio web para firma de arquitectura con más de 8 años de trayectoria y 120+ proyectos entregados, con visor 3D interactivo de modelos arquitectónicos y galería de proyectos.',
-    image: null,
+    image: '/images/card-arkeim.png',
     featured: true,
   },
   {
