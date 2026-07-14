@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import Reveal from '../components/Reveal'
+import ParallaxLayer from '../components/ParallaxLayer'
 
 const process = [
   { num: '01', title: 'Descubrimiento', desc: 'Analizamos tu negocio, audiencia y competencia para entender el contexto estratégico completo.' },
@@ -22,15 +24,15 @@ export default function ServiceDisenioWeb() {
       {/* Hero */}
       <section style={{
         position: 'relative', height: 680,
-        background: 'url(/images/service-web.jpg) center/cover no-repeat',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         overflow: 'hidden',
       }}>
+        <ParallaxLayer image="/images/service-web.jpg" />
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(180deg, #0A0A0A10 0%, #0A0A0A60 30%, #0A0A0AE0 70%, #0A0A0AF8 100%)',
         }} />
-        <div style={{
+        <Reveal style={{
           position: 'relative', zIndex: 1, textAlign: 'center',
           maxWidth: 900, padding: '0 24px',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24,
@@ -54,7 +56,7 @@ export default function ServiceDisenioWeb() {
           }}>
             Cotizar proyecto web
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       <div style={{ height: 1, background: 'var(--border)' }} />
@@ -62,7 +64,7 @@ export default function ServiceDisenioWeb() {
       {/* What we do */}
       <section style={{ background: 'var(--bg-navy)', padding: '100px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-          <div style={{ maxWidth: 700, marginBottom: 64, display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <Reveal style={{ maxWidth: 700, marginBottom: 64, display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>QUÉ HACEMOS</p>
             <h2 style={{
               fontFamily: 'var(--font-h)', fontSize: 40, fontWeight: 700,
@@ -73,10 +75,10 @@ export default function ServiceDisenioWeb() {
             <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
               Un sitio web es la primera impresión de tu negocio en el mundo digital. Lo construimos con estrategia, tecnología y creatividad para que se convierta en tu mejor vendedor.
             </p>
-          </div>
+          </Reveal>
           <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            {services.map(s => (
-              <div key={s.title} style={{
+            {services.map((s, i) => (
+              <Reveal key={s.title} delay={i * 80} className="hover-lift" style={{
                 flex: '1 1 280px',
                 background: 'var(--bg-slate)', border: '1px solid var(--border)',
                 borderRadius: 16, padding: 32,
@@ -85,7 +87,7 @@ export default function ServiceDisenioWeb() {
               }}>
                 <h3 style={{ fontSize: 18, fontWeight: 600, color: 'var(--fg-light)' }}>{s.title}</h3>
                 <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7 }}>{s.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -96,7 +98,7 @@ export default function ServiceDisenioWeb() {
       {/* Process */}
       <section style={{ background: 'var(--bg-slate)', padding: '100px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-          <div style={{ maxWidth: 600, marginBottom: 64, display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <Reveal style={{ maxWidth: 600, marginBottom: 64, display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>NUESTRO PROCESO</p>
             <h2 style={{
               fontFamily: 'var(--font-h)', fontSize: 40, fontWeight: 700,
@@ -104,10 +106,10 @@ export default function ServiceDisenioWeb() {
             }}>
               De la idea al lanzamiento
             </h2>
-          </div>
+          </Reveal>
           <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
-            {process.map(p => (
-              <div key={p.num} style={{
+            {process.map((p, i) => (
+              <Reveal key={p.num} delay={i * 90} style={{
                 flex: '1 1 220px', display: 'flex', flexDirection: 'column', gap: 16,
                 borderLeft: '2px solid var(--accent)', paddingLeft: 24,
               }}>
@@ -118,7 +120,7 @@ export default function ServiceDisenioWeb() {
                 </span>
                 <h3 style={{ fontSize: 20, fontWeight: 600, color: 'var(--fg-light)' }}>{p.title}</h3>
                 <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7 }}>{p.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -129,7 +131,7 @@ export default function ServiceDisenioWeb() {
       {/* Portfolio preview */}
       <section style={{ background: 'var(--bg-warm)', padding: '100px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 48 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
+          <Reveal style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
             <h2 style={{
               fontFamily: 'var(--font-h)', fontSize: 36, fontWeight: 700, color: 'var(--fg-dark)',
             }}>
@@ -138,10 +140,10 @@ export default function ServiceDisenioWeb() {
             <Link to="/portafolio" style={{ fontSize: 14, color: 'var(--fg-dark)', fontWeight: 600 }}>
               Ver portafolio completo →
             </Link>
-          </div>
+          </Reveal>
           <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
             {[1, 2, 3].map(n => (
-              <div key={n} style={{
+              <Reveal key={n} delay={n * 90} className="hover-lift" style={{
                 flex: '1 1 300px', height: 240, borderRadius: 12,
                 background: 'linear-gradient(135deg, var(--bg-navy), var(--bg-slate))',
                 boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
@@ -157,22 +159,24 @@ export default function ServiceDisenioWeb() {
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28,
         textAlign: 'center',
       }}>
-        <h2 style={{
-          fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 4vw, 48px)',
-          fontWeight: 700, color: 'var(--fg-light)', maxWidth: 800,
-        }}>
-          ¿Listo para tu nuevo sitio web?
-        </h2>
-        <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.85)', maxWidth: 500 }}>
-          Cuéntanos sobre tu proyecto y recibe una propuesta personalizada
-        </p>
-        <Link to="/cotizar" style={{
-          padding: '16px 40px', borderRadius: 9999,
-          background: 'var(--fg-light)', color: 'var(--fg-dark)',
-          fontSize: 15, fontWeight: 600,
-        }}>
-          Cotizar ahora
-        </Link>
+        <Reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
+          <h2 style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 4vw, 48px)',
+            fontWeight: 700, color: 'var(--fg-light)', maxWidth: 800,
+          }}>
+            ¿Listo para tu nuevo sitio web?
+          </h2>
+          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.85)', maxWidth: 500 }}>
+            Cuéntanos sobre tu proyecto y recibe una propuesta personalizada
+          </p>
+          <Link to="/cotizar" style={{
+            padding: '16px 40px', borderRadius: 9999,
+            background: 'var(--fg-light)', color: 'var(--fg-dark)',
+            fontSize: 15, fontWeight: 600,
+          }}>
+            Cotizar ahora
+          </Link>
+        </Reveal>
       </section>
 
       <style>{`

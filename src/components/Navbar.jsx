@@ -49,7 +49,7 @@ export default function Navbar() {
                 Servicios ▾
               </span>
               {servicesOpen && (
-                <div style={{
+                <div className="dropdown-menu" style={{
                   position: 'absolute', top: '100%', left: '50%',
                   transform: 'translateX(-50%)',
                   background: 'var(--bg-navy)',
@@ -108,7 +108,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div style={{
+          <div className="mobile-menu" style={{
             background: 'var(--bg-navy)', borderTop: '1px solid var(--border)',
             padding: '20px 24px 32px',
           }}>
@@ -154,6 +154,18 @@ export default function Navbar() {
       <style>{`
         .nav-link:hover { color: var(--fg-light) !important; }
         .dropdown-item:hover { color: var(--fg-light) !important; background: rgba(255,255,255,0.05); }
+        @media (prefers-reduced-motion: no-preference) {
+          @keyframes dropdownIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+          }
+          .dropdown-menu { animation: dropdownIn 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+          @keyframes menuIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .mobile-menu { animation: menuIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+        }
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }

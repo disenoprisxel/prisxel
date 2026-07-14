@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Reveal from '../components/Reveal'
+import ParallaxLayer from '../components/ParallaxLayer'
 
 const serviceOptions = [
   'Diseño Web',
@@ -51,10 +53,10 @@ export default function Cotizar() {
     <div>
       {/* Hero */}
       <section style={{
-        background: `url(/images/slide-archviz.jpg) center/cover no-repeat`,
         position: 'relative', overflow: 'hidden',
         padding: '80px 60px',
       }}>
+        <ParallaxLayer image="/images/slide-archviz.jpg" />
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(270deg, #0A0A0AF8 0%, #0A0A0AE8 40%, #0A0A0ADD 100%)',
@@ -64,7 +66,7 @@ export default function Cotizar() {
           maxWidth: 1440, margin: '0 auto',
           display: 'flex', gap: 80, alignItems: 'flex-start', flexWrap: 'wrap',
         }}>
-          <div style={{ flex: '1 1 400px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <Reveal style={{ flex: '1 1 400px', display: 'flex', flexDirection: 'column', gap: 24 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 5, color: 'var(--accent)' }}>
               COTIZAR PROYECTO
             </p>
@@ -89,10 +91,10 @@ export default function Cotizar() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           {/* Form */}
-          <div style={{
+          <Reveal delay={130} style={{
             flex: '1 1 440px',
             background: 'var(--bg-slate)', border: '1px solid var(--border)',
             borderRadius: 20, padding: 40,
@@ -191,7 +193,7 @@ export default function Cotizar() {
                 </button>
               </form>
             )}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -200,22 +202,22 @@ export default function Cotizar() {
       {/* What happens next */}
       <section style={{ background: 'var(--bg-navy)', padding: '80px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 48 }}>
-          <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <Reveal style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>¿QUÉ PASA DESPUÉS?</p>
             <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 36, fontWeight: 700, color: 'var(--fg-light)' }}>
               Tu camino hacia el proyecto ideal
             </h2>
-          </div>
+          </Reveal>
           <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
-            {nextSteps.map(s => (
-              <div key={s.num} style={{
+            {nextSteps.map((s, i) => (
+              <Reveal key={s.num} delay={i * 100} style={{
                 flex: '1 1 220px', display: 'flex', flexDirection: 'column', gap: 16,
                 borderLeft: '2px solid var(--accent)', paddingLeft: 24,
               }}>
                 <span style={{ fontSize: 13, fontWeight: 600, letterSpacing: 2, color: 'var(--accent)' }}>{s.num}</span>
                 <h3 style={{ fontSize: 18, fontWeight: 600, color: 'var(--fg-light)' }}>{s.title}</h3>
                 <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7 }}>{s.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

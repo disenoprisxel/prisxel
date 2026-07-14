@@ -1,4 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
+import Reveal from '../components/Reveal'
+import ParallaxLayer from '../components/ParallaxLayer'
 
 const cases = {
   grs: {
@@ -140,15 +142,14 @@ export default function CasoEstudio() {
       <section style={{
         position: 'relative', minHeight: 520, overflow: 'hidden',
         display: 'flex', alignItems: 'flex-end',
-        background: caso.image
-          ? `url(${caso.image}) center/cover no-repeat`
-          : 'linear-gradient(135deg, #0d1a0d, #0A0A0A)',
+        background: caso.image ? undefined : 'linear-gradient(135deg, #0d1a0d, #0A0A0A)',
       }}>
+        {caso.image && <ParallaxLayer image={caso.image} speed={0.1} />}
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.97) 100%)',
         }} />
-        <div style={{
+        <Reveal style={{
           position: 'relative', zIndex: 1,
           padding: '0 60px 56px', width: '100%',
           display: 'flex', flexDirection: 'column', gap: 20,
@@ -175,7 +176,7 @@ export default function CasoEstudio() {
             {caso.title}
           </h1>
           <p style={{ fontSize: 16, color: 'var(--fg-muted)' }}>{caso.subtitle}</p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Meta */}
@@ -212,20 +213,20 @@ export default function CasoEstudio() {
       {/* Contexto + Antes */}
       <section style={{ background: 'var(--bg-dark)', padding: '80px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', gap: 80, flexWrap: 'wrap' }}>
-          <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <Reveal style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>EL CLIENTE</p>
             <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2 }}>
               ¿Quiénes son?
             </h2>
             <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.9 }}>{caso.context}</p>
-          </div>
-          <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+          </Reveal>
+          <Reveal delay={120} style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 16 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>ANTES DE PRISXEL</p>
             <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2 }}>
               La situación inicial
             </h2>
             <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.9 }}>{caso.before}</p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -234,15 +235,15 @@ export default function CasoEstudio() {
       {/* El reto + objetivos */}
       <section style={{ background: 'var(--bg-slate)', padding: '80px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', gap: 80, flexWrap: 'wrap' }}>
-          <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <Reveal style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 20 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>EL RETO</p>
             <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2 }}>
               El desafío
             </h2>
             <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.9 }}>{caso.challenge}</p>
-          </div>
+          </Reveal>
           {caso.objectives.length > 0 && (
-            <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <Reveal delay={120} style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 20 }}>
               <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>OBJETIVOS</p>
               <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2 }}>
                 Qué buscaban lograr
@@ -262,7 +263,7 @@ export default function CasoEstudio() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           )}
         </div>
       </section>
@@ -273,15 +274,15 @@ export default function CasoEstudio() {
       <section style={{ background: 'var(--bg-dark)', padding: '80px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 56 }}>
           <div style={{ display: 'flex', gap: 80, flexWrap: 'wrap' }}>
-            <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <Reveal style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 16 }}>
               <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>LA SOLUCIÓN</p>
               <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2 }}>
                 Nuestra propuesta
               </h2>
               <p style={{ fontSize: 16, color: 'var(--fg-muted)', lineHeight: 1.9 }}>{caso.solution}</p>
-            </div>
+            </Reveal>
             {caso.features.length > 0 && (
-              <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <Reveal delay={120} style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>FUNCIONALIDADES</p>
                 <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)', lineHeight: 1.2 }}>
                   Qué incluye
@@ -294,14 +295,14 @@ export default function CasoEstudio() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </Reveal>
             )}
           </div>
 
           {/* Placeholder galería */}
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             {[1, 2, 3].map(n => (
-              <div key={n} style={{
+              <Reveal key={n} delay={n * 90} className="hover-lift" style={{
                 flex: '1 1 280px', height: 220, borderRadius: 16,
                 background: 'linear-gradient(135deg, #0d1a0d, #0A0A0A)',
                 border: '1px solid var(--border)',
@@ -310,7 +311,7 @@ export default function CasoEstudio() {
               }}>
                 <span style={{ fontSize: 28, opacity: 0.15 }}>🖥</span>
                 <p style={{ fontSize: 11, color: 'var(--fg-muted)', letterSpacing: 2 }}>SCREENSHOT PRÓXIMAMENTE</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -322,21 +323,21 @@ export default function CasoEstudio() {
           <div style={{ height: 1, background: 'var(--border)' }} />
           <section style={{ background: 'var(--accent)', padding: '80px 60px' }}>
             <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 48 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <Reveal style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'rgba(255,255,255,0.7)' }}>RESULTADOS</p>
                 <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 40, fontWeight: 700, color: 'var(--fg-light)' }}>
                   El impacto del proyecto
                 </h2>
-              </div>
+              </Reveal>
               <div style={{ display: 'flex', gap: 60, flexWrap: 'wrap' }}>
-                {caso.results.map(r => (
-                  <div key={r.label} style={{ flex: '1 1 200px' }}>
+                {caso.results.map((r, i) => (
+                  <Reveal key={r.label} delay={i * 100} style={{ flex: '1 1 200px' }}>
                     <p style={{
                       fontFamily: 'var(--font-h)', fontSize: 56, fontWeight: 800,
                       color: 'var(--fg-light)', lineHeight: 1,
                     }}>{r.num}</p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', marginTop: 10, lineHeight: 1.6 }}>{r.label}</p>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -358,14 +359,14 @@ export default function CasoEstudio() {
             </Link>
           </div>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-            {(otherProjects[id] || []).map(p => (
-              <Link key={p.id} to={`/portafolio/caso/${p.id}`} style={{
+            {(otherProjects[id] || []).map((p, i) => (
+              <Reveal key={p.id} as={Link} to={`/portafolio/caso/${p.id}`} delay={i * 90} className="portfolio-card hover-lift" style={{
                 flex: '1 1 280px', height: 180, borderRadius: 16,
                 background: 'linear-gradient(135deg, var(--bg-dark), var(--bg-navy))',
                 border: '1px solid var(--border)',
                 position: 'relative', overflow: 'hidden', display: 'block',
                 transition: 'border-color 0.2s',
-              }} className="portfolio-card">
+              }}>
                 <div style={{
                   position: 'absolute', bottom: 0, left: 0, right: 0,
                   padding: '20px', background: 'linear-gradient(180deg, transparent, rgba(10,10,10,0.92))',
@@ -375,7 +376,7 @@ export default function CasoEstudio() {
                   </p>
                   <p style={{ fontSize: 16, fontWeight: 600, color: 'var(--fg-light)' }}>{p.title}</p>
                 </div>
-              </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -387,19 +388,21 @@ export default function CasoEstudio() {
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24,
         textAlign: 'center', borderTop: '1px solid var(--border)',
       }}>
-        <h2 style={{
-          fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 3vw, 40px)',
-          fontWeight: 700, color: 'var(--fg-light)', maxWidth: 600,
-        }}>
-          ¿Quieres un sitio web como este?
-        </h2>
-        <Link to="/cotizar" style={{
-          padding: '14px 36px', borderRadius: 9999,
-          background: 'var(--accent)', color: 'var(--fg-light)',
-          fontSize: 15, fontWeight: 700,
-        }}>
-          Cotizar proyecto →
-        </Link>
+        <Reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+          <h2 style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 3vw, 40px)',
+            fontWeight: 700, color: 'var(--fg-light)', maxWidth: 600,
+          }}>
+            ¿Quieres un sitio web como este?
+          </h2>
+          <Link to="/cotizar" style={{
+            padding: '14px 36px', borderRadius: 9999,
+            background: 'var(--accent)', color: 'var(--fg-light)',
+            fontSize: 15, fontWeight: 700,
+          }}>
+            Cotizar proyecto →
+          </Link>
+        </Reveal>
       </section>
 
       <style>{`

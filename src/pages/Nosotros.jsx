@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import Reveal from '../components/Reveal'
+import ParallaxLayer from '../components/ParallaxLayer'
 
 const values = [
   {
@@ -60,15 +62,12 @@ export default function Nosotros() {
         position: 'relative', minHeight: 540, overflow: 'hidden',
         display: 'flex', alignItems: 'flex-end',
       }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'url(/images/portfolio-2.jpg) center/cover no-repeat',
-        }} />
+        <ParallaxLayer image="/images/portfolio-2.jpg" speed={0.1} />
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(90deg, rgba(10,10,10,0.82) 45%, rgba(10,10,10,0.35) 100%)',
         }} />
-        <div style={{
+        <Reveal style={{
           position: 'relative', zIndex: 1,
           padding: '80px 60px',
           display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 720,
@@ -85,7 +84,7 @@ export default function Nosotros() {
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, maxWidth: 520 }}>
             Somos un estudio creativo en Bogotá especializado en diseño web, visualización arquitectónica y producción audiovisual.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       <div style={{ height: 1, background: 'var(--border)' }} />
@@ -94,7 +93,7 @@ export default function Nosotros() {
       <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: 'auto auto' }}>
 
         {/* Celda 1 — Misión (texto) */}
-        <div style={{
+        <Reveal style={{
           background: 'var(--bg-dark)',
           padding: '80px 60px',
           display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20,
@@ -113,24 +112,24 @@ export default function Nosotros() {
           <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
             Combinamos creatividad, tecnología y estrategia para entregar soluciones que no solo se ven extraordinarias, sino que generan resultados reales.
           </p>
-        </div>
+        </Reveal>
 
         {/* Celda 2 — Imagen laptop */}
-        <div style={{
+        <Reveal delay={100} style={{
           minHeight: 340,
           background: 'url(/images/service-web.jpg) center/cover no-repeat',
           borderBottom: '1px solid var(--border)',
         }} />
 
         {/* Celda 3 — Imagen arquitectura */}
-        <div style={{
+        <Reveal delay={100} style={{
           minHeight: 340,
           background: 'url(/images/service-arch.jpg) center/cover no-repeat',
           borderRight: '1px solid var(--border)',
         }} />
 
         {/* Celda 4 — Visión (texto) */}
-        <div style={{
+        <Reveal delay={200} style={{
           background: 'var(--bg-navy)',
           padding: '80px 60px',
           display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 20,
@@ -148,7 +147,7 @@ export default function Nosotros() {
           <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.8 }}>
             Reconocidos por la calidad excepcional de nuestro trabajo y por transformar cada proyecto en una experiencia memorable.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* ── 2. STATS — fondo naranja ── */}
@@ -164,14 +163,14 @@ export default function Nosotros() {
             { num: '+30', label: 'Clientes satisfechos' },
             { num: '4',   label: 'Servicios especializados' },
             { num: '5+',  label: 'Años de experiencia' },
-          ].map(s => (
-            <div key={s.label} style={{ flex: '1 1 140px', textAlign: 'center' }}>
+          ].map((s, i) => (
+            <Reveal key={s.label} delay={i * 90} style={{ flex: '1 1 140px', textAlign: 'center' }}>
               <p style={{
                 fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 4vw, 52px)',
                 fontWeight: 800, color: 'var(--fg-light)', lineHeight: 1,
               }}>{s.num}</p>
               <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 6, fontWeight: 500 }}>{s.label}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -180,7 +179,7 @@ export default function Nosotros() {
       <section style={{ background: 'var(--bg-dark)', padding: '100px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 56 }}>
           {/* Header centrado */}
-          <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <Reveal style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 12 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>NUESTROS VALORES</p>
             <h2 style={{
               fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 3vw, 42px)',
@@ -188,12 +187,12 @@ export default function Nosotros() {
             }}>
               Lo que nos define como estudio
             </h2>
-          </div>
+          </Reveal>
 
           {/* Cards */}
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-            {values.map(v => (
-              <div key={v.title} style={{
+            {values.map((v, i) => (
+              <Reveal key={v.title} delay={i * 90} className="hover-lift" style={{
                 flex: '1 1 220px',
                 background: 'var(--bg-slate)', border: '1px solid var(--border)',
                 borderRadius: 16, padding: 32,
@@ -211,7 +210,7 @@ export default function Nosotros() {
                 </div>
                 <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--fg-light)' }}>{v.title}</h3>
                 <p style={{ fontSize: 14, color: 'var(--fg-muted)', lineHeight: 1.7 }}>{v.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
 
@@ -223,7 +222,7 @@ export default function Nosotros() {
               'url(/images/service-web.jpg)',
               'url(/images/service-arch.jpg)',
             ].map((img, i) => (
-              <div key={i} style={{
+              <Reveal key={i} delay={i * 80} style={{
                 flex: 1,
                 background: `${img} center/cover no-repeat`,
               }} />
@@ -235,7 +234,7 @@ export default function Nosotros() {
       {/* ── 4. PROCESO ── */}
       <section style={{ background: 'var(--bg-navy)', padding: '100px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 56 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <Reveal style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>CÓMO TRABAJAMOS</p>
             <h2 style={{
               fontFamily: 'var(--font-h)', fontSize: 'clamp(26px, 3vw, 40px)',
@@ -243,12 +242,12 @@ export default function Nosotros() {
             }}>
               Un proceso diseñado para resultados extraordinarios
             </h2>
-          </div>
+          </Reveal>
 
           {/* Cards de pasos */}
           <div style={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
             {steps.map((s, i) => (
-              <div key={s.num} style={{
+              <Reveal key={s.num} delay={i * 100} className="hover-lift" style={{
                 flex: '1 1 200px',
                 background: 'var(--bg-slate)', border: '1px solid var(--border)',
                 borderRadius: i === 0 ? '14px 0 0 14px' : i === steps.length - 1 ? '0 14px 14px 0' : 0,
@@ -265,7 +264,7 @@ export default function Nosotros() {
                   <div style={{ width: 20, height: 2, background: 'var(--accent)' }} />
                   <span style={{ fontSize: 16, fontWeight: 700 }}>→</span>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -276,15 +275,12 @@ export default function Nosotros() {
         position: 'relative', minHeight: 340, overflow: 'hidden',
         display: 'flex', alignItems: 'center',
       }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'url(/images/portfolio-2.jpg) center/cover no-repeat',
-        }} />
+        <ParallaxLayer image="/images/portfolio-2.jpg" speed={0.08} />
         <div style={{
           position: 'absolute', inset: 0,
           background: 'rgba(10,10,10,0.72)',
         }} />
-        <div style={{
+        <Reveal style={{
           position: 'relative', zIndex: 1,
           padding: '80px 60px', maxWidth: 700,
         }}>
@@ -298,7 +294,7 @@ export default function Nosotros() {
           <p style={{ fontSize: 14, color: 'var(--accent)', fontWeight: 600 }}>
             — El equipo Prisxel
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* ── 6. CTA ── */}
@@ -307,22 +303,24 @@ export default function Nosotros() {
         display: 'flex', flexDirection: 'column', alignItems: 'center',
         gap: 24, textAlign: 'center',
       }}>
-        <h2 style={{
-          fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 3vw, 44px)',
-          fontWeight: 700, color: 'var(--fg-light)',
-        }}>
-          ¿Listo para dar el siguiente paso?
-        </h2>
-        <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.85)', maxWidth: 480 }}>
-          Cuéntanos tu proyecto y te mostramos cómo podemos transformarlo.
-        </p>
-        <Link to="/cotizar" style={{
-          padding: '14px 36px', borderRadius: 9999,
-          background: 'var(--fg-light)', color: 'var(--fg-dark)',
-          fontSize: 15, fontWeight: 700,
-        }}>
-          Cotizar proyecto →
-        </Link>
+        <Reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+          <h2 style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 3vw, 44px)',
+            fontWeight: 700, color: 'var(--fg-light)',
+          }}>
+            ¿Listo para dar el siguiente paso?
+          </h2>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.85)', maxWidth: 480 }}>
+            Cuéntanos tu proyecto y te mostramos cómo podemos transformarlo.
+          </p>
+          <Link to="/cotizar" style={{
+            padding: '14px 36px', borderRadius: 9999,
+            background: 'var(--fg-light)', color: 'var(--fg-dark)',
+            fontSize: 15, fontWeight: 700,
+          }}>
+            Cotizar proyecto →
+          </Link>
+        </Reveal>
       </section>
 
       <style>{`

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Reveal from '../components/Reveal'
 
 const categories = ['Todos', 'Diseño Web', 'Renders', 'Recorridos Virtuales', 'Motion']
 
@@ -98,7 +99,7 @@ export default function Portafolio() {
         background: 'var(--bg-dark)', padding: '80px 60px 60px',
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40,
       }}>
-        <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <Reveal style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 16 }}>
           <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 5, color: 'var(--accent)' }}>PORTAFOLIO</p>
           <h1 style={{
             fontFamily: 'var(--font-h)', fontSize: 'clamp(36px, 5vw, 56px)',
@@ -109,7 +110,7 @@ export default function Portafolio() {
           <p style={{ fontSize: 17, color: 'var(--fg-muted)', maxWidth: 560, lineHeight: 1.6, margin: '0 auto' }}>
             Proyectos reales, resultados reales. Cada sitio construido con estrategia, diseño y tecnología.
           </p>
-        </div>
+        </Reveal>
 
         {/* Filtros */}
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -142,7 +143,8 @@ export default function Portafolio() {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               {filtered.map((p, i) => (
-                <div key={p.id}
+                <Reveal key={p.id}
+                  delay={i * 90}
                   onMouseEnter={() => setHovered(p.id)}
                   onMouseLeave={() => setHovered(null)}
                   style={{
@@ -223,7 +225,7 @@ export default function Portafolio() {
                       </Link>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           )}
@@ -238,22 +240,24 @@ export default function Portafolio() {
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24,
         textAlign: 'center',
       }}>
-        <h2 style={{
-          fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 4vw, 44px)',
-          fontWeight: 700, color: 'var(--fg-light)',
-        }}>
-          ¿Tu proyecto podría ser el siguiente?
-        </h2>
-        <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.85)', maxWidth: 480 }}>
-          Cuéntanos tu idea y te mostramos cómo la convertimos en realidad.
-        </p>
-        <Link to="/cotizar" style={{
-          padding: '14px 36px', borderRadius: 9999,
-          background: 'var(--fg-light)', color: 'var(--fg-dark)',
-          fontSize: 15, fontWeight: 700,
-        }}>
-          Cotizar proyecto →
-        </Link>
+        <Reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+          <h2 style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 4vw, 44px)',
+            fontWeight: 700, color: 'var(--fg-light)',
+          }}>
+            ¿Tu proyecto podría ser el siguiente?
+          </h2>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.85)', maxWidth: 480 }}>
+            Cuéntanos tu idea y te mostramos cómo la convertimos en realidad.
+          </p>
+          <Link to="/cotizar" style={{
+            padding: '14px 36px', borderRadius: 9999,
+            background: 'var(--fg-light)', color: 'var(--fg-dark)',
+            fontSize: 15, fontWeight: 700,
+          }}>
+            Cotizar proyecto →
+          </Link>
+        </Reveal>
       </section>
 
       <style>{`

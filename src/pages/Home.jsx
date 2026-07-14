@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useCallback } from 'react'
+import Reveal from '../components/Reveal'
+import useParallax from '../hooks/useParallax'
 
 const services = [
   {
@@ -74,6 +76,7 @@ const slides = [
 function HeroSlideshow() {
   const [current, setCurrent] = useState(0)
   const [animating, setAnimating] = useState(false)
+  const parallaxRef = useParallax(0.08)
 
   const goTo = useCallback((index) => {
     if (animating) return
@@ -97,29 +100,31 @@ function HeroSlideshow() {
   return (
     <section style={{ position: 'relative', height: '780px', overflow: 'hidden' }}>
       {/* Slides de fondo — todos montados, solo el activo visible */}
-      {slides.map((s, i) => (
-        <div key={i} style={{
-          position: 'absolute', inset: 0,
-          opacity: i === current ? 1 : 0,
-          transition: 'opacity 0.7s ease',
-          zIndex: 0,
-        }}>
-          {s.video ? (
-            <video
-              autoPlay muted loop playsInline
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              poster={s.image}
-            >
-              <source src={s.video} type="video/mp4" />
-            </video>
-          ) : (
-            <div style={{
-              width: '100%', height: '100%',
-              background: `url(${s.image}) center/cover no-repeat`,
-            }} />
-          )}
-        </div>
-      ))}
+      <div ref={parallaxRef} style={{ position: 'absolute', top: -60, left: 0, right: 0, bottom: -60, willChange: 'transform' }}>
+        {slides.map((s, i) => (
+          <div key={i} style={{
+            position: 'absolute', inset: 0,
+            opacity: i === current ? 1 : 0,
+            transition: 'opacity 0.7s ease',
+            zIndex: 0,
+          }}>
+            {s.video ? (
+              <video
+                autoPlay muted loop playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                poster={s.image}
+              >
+                <source src={s.video} type="video/mp4" />
+              </video>
+            ) : (
+              <div style={{
+                width: '100%', height: '100%',
+                background: `url(${s.image}) center/cover no-repeat`,
+              }} />
+            )}
+          </div>
+        ))}
+      </div>
 
       {/* Overlay gradiente */}
       <div style={{
@@ -237,7 +242,7 @@ export default function Home() {
             height: 480, padding: '40px 60px', gap: 60,
             flexDirection: i % 2 === 0 ? 'row' : 'row-reverse',
           }}>
-            <div style={{
+            <Reveal className="hover-lift" style={{
               flex: 1, borderRadius: 12, height: '100%', overflow: 'hidden',
               background: s.image
                 ? `url(${s.image}) center/cover no-repeat`
@@ -253,8 +258,8 @@ export default function Home() {
                   border: '1px solid rgba(255,255,255,0.08)',
                 }} />
               )}
-            </div>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
+            </Reveal>
+            <Reveal delay={120} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
               <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>
                 SERVICIO
               </p>
@@ -274,7 +279,7 @@ export default function Home() {
               }}>
                 Conocer más →
               </Link>
-            </div>
+            </Reveal>
           </section>
           <div style={{ height: 1, background: 'var(--border)' }} />
         </div>
@@ -285,15 +290,15 @@ export default function Home() {
         background: 'var(--bg-warm)', padding: '100px 60px',
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 56,
       }}>
-        <h2 style={{
+        <Reveal as="h2" style={{
           fontFamily: 'var(--font-h)', fontSize: 40, fontWeight: 700,
           color: 'var(--fg-dark)',
         }}>
           Nuestro trabajo habla por nosotros
-        </h2>
+        </Reveal>
         <div style={{ display: 'flex', gap: 24, width: '100%', flexWrap: 'wrap' }}>
           {[1, 2, 3].map(n => (
-            <div key={n} style={{
+            <Reveal key={n} delay={n * 100} className="hover-lift" style={{
               flex: '1 1 280px', height: 280, borderRadius: 12,
               background: `linear-gradient(135deg, var(--bg-navy), var(--bg-slate))`,
               overflow: 'hidden', position: 'relative',
@@ -305,7 +310,7 @@ export default function Home() {
               }}>
                 <span style={{ fontSize: 48, opacity: 0.15 }}>◆</span>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
         <Link to="/portafolio" style={{
@@ -336,8 +341,8 @@ export default function Home() {
           </h2>
         </div>
         <div style={{ display: 'flex', gap: 48, width: '100%', flexWrap: 'wrap' }}>
-          {reasons.map(r => (
-            <div key={r.num} style={{
+          {reasons.map((r, i) => (
+            <Reveal key={r.num} delay={i * 100} style={{
               flex: '1 1 260px', display: 'flex', flexDirection: 'column', gap: 16,
             }}>
               <span style={{
@@ -352,7 +357,7 @@ export default function Home() {
               <p style={{ fontSize: 15, color: 'var(--fg-muted)', lineHeight: 1.7 }}>
                 {r.desc}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -363,23 +368,25 @@ export default function Home() {
         display: 'flex', flexDirection: 'column', alignItems: 'center',
         justifyContent: 'center', gap: 28, textAlign: 'center',
       }}>
-        <h2 style={{
-          fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 4vw, 48px)',
-          fontWeight: 700, color: 'var(--fg-light)',
-          maxWidth: 800, lineHeight: 1.2,
-        }}>
-          ¿Listo para transformar tu proyecto?
-        </h2>
-        <Link to="/cotizar" style={{
-          padding: '16px 40px', borderRadius: 9999,
-          background: 'var(--fg-light)', color: 'var(--fg-dark)',
-          fontSize: 15, fontWeight: 600,
-        }}>
-          Cotizar proyecto
-        </Link>
-        <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: 3, color: 'rgba(255,255,255,0.8)' }}>
-          disenoprisxel@gmail.com
-        </p>
+        <Reveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 }}>
+          <h2 style={{
+            fontFamily: 'var(--font-h)', fontSize: 'clamp(28px, 4vw, 48px)',
+            fontWeight: 700, color: 'var(--fg-light)',
+            maxWidth: 800, lineHeight: 1.2,
+          }}>
+            ¿Listo para transformar tu proyecto?
+          </h2>
+          <Link to="/cotizar" style={{
+            padding: '16px 40px', borderRadius: 9999,
+            background: 'var(--fg-light)', color: 'var(--fg-dark)',
+            fontSize: 15, fontWeight: 600,
+          }}>
+            Cotizar proyecto
+          </Link>
+          <p style={{ fontSize: 12, fontWeight: 500, letterSpacing: 3, color: 'rgba(255,255,255,0.8)' }}>
+            disenoprisxel@gmail.com
+          </p>
+        </Reveal>
       </section>
 
       <style>{`

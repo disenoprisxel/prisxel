@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Reveal from '../components/Reveal'
 
 const socials = [
   { name: 'Instagram', handle: '@prisxel.studio', href: 'https://instagram.com/prisxel.studio', icon: '📸' },
@@ -14,7 +15,7 @@ export default function Contacto() {
       <section style={{ display: 'flex', minHeight: 600, overflow: 'hidden' }}>
 
         {/* Lado izquierdo — contenido */}
-        <div style={{
+        <Reveal style={{
           flex: 1, minWidth: 0,
           background: 'var(--bg-dark)',
           padding: '80px 60px',
@@ -82,7 +83,7 @@ export default function Contacto() {
               WhatsApp →
             </a>
           </div>
-        </div>
+        </Reveal>
 
         {/* Lado derecho — imagen */}
         <div style={{
@@ -110,13 +111,13 @@ export default function Contacto() {
             { label: 'Proyectos completados', value: '150+' },
             { label: 'Países de operación', value: '4+' },
             { label: 'Satisfacción', value: '100%' },
-          ].map(s => (
-            <div key={s.label} style={{ flex: '1 1 140px', textAlign: 'center' }}>
+          ].map((s, i) => (
+            <Reveal key={s.label} delay={i * 90} style={{ flex: '1 1 140px', textAlign: 'center' }}>
               <p style={{ fontFamily: 'var(--font-h)', fontSize: 34, fontWeight: 700, color: 'var(--accent)' }}>
                 {s.value}
               </p>
               <p style={{ fontSize: 13, color: 'var(--fg-muted)', marginTop: 4 }}>{s.label}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -126,13 +127,13 @@ export default function Contacto() {
       {/* ── 3. MAPA (sin lista de datos — ya están arriba) ── */}
       <section style={{ background: 'var(--bg-dark)', padding: '80px 60px' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <Reveal style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>UBICACIÓN</p>
             <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 32, fontWeight: 700, color: 'var(--fg-light)' }}>
               Calle 87 # 96-90, Bogotá
             </h2>
-          </div>
-          <div style={{
+          </Reveal>
+          <Reveal delay={100} style={{
             borderRadius: 20, overflow: 'hidden',
             border: '1px solid var(--border)',
             boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
@@ -147,7 +148,7 @@ export default function Contacto() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Ubicación Prisxel — Calle 87 # 96-90, Bogotá"
             />
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -159,7 +160,7 @@ export default function Contacto() {
         display: 'flex', gap: 60, flexWrap: 'wrap', alignItems: 'flex-start',
       }}>
         {/* Redes */}
-        <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <Reveal style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>SÍGUENOS</p>
             <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 28, fontWeight: 700, color: 'var(--fg-light)' }}>
@@ -185,10 +186,10 @@ export default function Contacto() {
               </a>
             ))}
           </div>
-        </div>
+        </Reveal>
 
         {/* Llamada */}
-        <div style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <Reveal delay={130} style={{ flex: '1 1 340px', display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: 4, color: 'var(--accent)' }}>AGENDA UNA LLAMADA</p>
             <h2 style={{ fontFamily: 'var(--font-h)', fontSize: 28, fontWeight: 700, color: 'var(--fg-light)' }}>
@@ -222,7 +223,7 @@ export default function Contacto() {
               Agendar llamada →
             </a>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <style>{`
