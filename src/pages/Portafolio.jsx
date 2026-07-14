@@ -157,7 +157,7 @@ export default function Portafolio() {
                   }}
                 >
                   {/* Imagen / placeholder */}
-                  <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+                  <div className="portfolio-card-image" style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
                     {p.image ? (
                       <div style={{
                         width: '100%', height: '100%',
@@ -264,6 +264,7 @@ export default function Portafolio() {
             height: auto !important;
           }
           div[style*='flex: 0 0 480px'] { flex: unset !important; width: 100% !important; padding: 32px 24px !important; }
+          .portfolio-card-image { flex: unset !important; width: 100% !important; height: 240px !important; }
         }
       `}</style>
     </div>
